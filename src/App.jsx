@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { useProgress } from './hooks/useProgress';
 import Layout from './components/Layout/Layout';
@@ -64,7 +64,13 @@ function AppInner() {
   const [showPin, setShowPin] = useState(false);
   const [parentMode, setParentMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   const handleParentMode = () => {
     if (parentMode) {
@@ -83,7 +89,7 @@ function AppInner() {
 
   if (parentMode && showSettings) {
     return (
-      <Layout onParentMode={handleParentMode}>
+      <Layout onParentMode={handleParentMode} darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)}>
         <Settings
           progress={data}
           updateSettings={updateSettings}
@@ -95,7 +101,7 @@ function AppInner() {
   }
 
   return (
-    <Layout onParentMode={handleParentMode}>
+    <Layout onParentMode={handleParentMode} darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)}>
       {showPin && (
         <PinModal
           pin={data.pin}

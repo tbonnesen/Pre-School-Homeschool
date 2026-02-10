@@ -1,13 +1,27 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DOMAINS, ACTIVITIES } from '../data/curriculum';
 import { getDailySuggestion } from '../utils/adaptive';
 
+const AGE_LABELS = { 0: 'All Ages', 3: 'Age 3 (Easy)', 4: 'Age 4 (Medium)', 5: 'Age 5 (Hard)' };
+const AGE_DIFFICULTY = { 3: 1, 4: 2, 5: 3 };
+
 export default function Home({ progress, getCompletionPercent }) {
   const navigate = useNavigate();
-  const suggestion = getDailySuggestion(progress.completed, ACTIVITIES);
+  const [ageFilter, setAgeFilter] = useState(0);
   const name = progress.childName || 'Friend';
 
-  const totalActivities = Object.values(ACTIVITIES).reduce((s, a) => s + a.length, 0);
+  // Filter activities by age/difficulty
+  const filteredActivities = {};
+  for (const [domainId, acts] of Object.entries(ACTIVITIES)) {
+    filteredActivities[domainId] = ageFilter === 0
+      ? acts
+      : acts.filter((a) => a.difficulty === AGE_DIFFICULTY[ageFilter]);
+  }
+
+  const suggestion = getDailySuggestion(progress.completed, filteredActivities);
+
+  const totalActivities = Object.values(filteredActivities).reduce((s, a) => s + a.length, 0);
   const totalCompleted = Object.values(progress.completed || {}).reduce(
     (s, d) => s + Object.keys(d).length, 0
   );
@@ -29,6 +43,20 @@ export default function Home({ progress, getCompletionPercent }) {
         </div>
       </div>
 
+      {/* Age Filter */}
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 24, flexWrap: 'wrap' }}>
+        {Object.entries(AGE_LABELS).map(([age, label]) => (
+          <button
+            key={age}
+            className={`btn ${ageFilter === Number(age) ? 'btn-primary' : 'btn-secondary'}`}
+            style={{ padding: '8px 18px', fontSize: '0.95rem' }}
+            onClick={() => setAgeFilter(Number(age))}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       {suggestion && (
         <div
           className="daily-suggestion"
@@ -41,18 +69,22 @@ export default function Home({ progress, getCompletionPercent }) {
 
       <div className="domain-grid">
         {Object.values(DOMAINS).map((domain) => {
-          const activities = ACTIVITIES[domain.id] || [];
+          const activities = filteredActivities[domain.id] || [];
+          if (activities.length === 0) return null;
           const pct = getCompletionPercent(domain.id, activities);
           return (
             <div
               key={domain.id}
               className="domain-card"
               style={{ borderColor: domain.color }}
-              onClick={() => navigate(`/domain/${domain.id}`)}
+              onClick={() => navigate(`/domain/${domain.id}${ageFilter ? `?age=${ageFilter}` : ''}`)}
             >
               <div className="domain-card-icon">{domain.icon}</div>
               <div className="domain-card-title">{domain.title}</div>
               <div className="domain-card-desc">{domain.description}</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-light)' }}>
+                {activities.length} activities
+              </div>
               <div className="domain-card-progress">
                 <div className="progress-bar">
                   <div

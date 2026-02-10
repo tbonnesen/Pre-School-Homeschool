@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-export default function Layout({ children, onParentMode }) {
+export default function Layout({ children, onParentMode, darkMode, onToggleDark }) {
   return (
     <>
       <nav className="navbar">
@@ -16,6 +16,9 @@ export default function Layout({ children, onParentMode }) {
           </NavLink>
           <button onClick={onParentMode}>
             Parent
+          </button>
+          <button className="theme-toggle" onClick={onToggleDark} title="Toggle dark mode">
+            {darkMode ? '☀️' : '🌙'}
           </button>
         </div>
       </nav>

@@ -17,6 +17,25 @@
   --shadow-hover: 0 8px 25px rgba(0,0,0,0.12);
   --radius: 20px;
   --radius-sm: 12px;
+  --nav-bg: white;
+  --border-color: #E0E0E0;
+  --badge-bg: #FFF8F0;
+  --progress-bg: #EEE;
+  --input-bg: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --bg: #1A1A2E;
+  --bg-card: #16213E;
+  --text: #E0E0E0;
+  --text-light: #A0A0B0;
+  --shadow: 0 4px 15px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 25px rgba(0,0,0,0.4);
+  --nav-bg: #0F3460;
+  --border-color: #2A2A4A;
+  --badge-bg: #1A1A2E;
+  --progress-bg: #2A2A4A;
+  --input-bg: #1A1A2E;
 }
 
 * {
@@ -60,7 +79,7 @@ a {
 
 /* Nav */
 .navbar {
-  background: white;
+  background: var(--nav-bg);
   padding: 12px 20px;
   display: flex;
   align-items: center;
@@ -170,7 +189,7 @@ a {
 
 .progress-bar {
   height: 10px;
-  background: #EEE;
+  background: var(--progress-bg);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -266,7 +285,7 @@ a {
 
 .activity-progress-bar {
   height: 8px;
-  background: #eee;
+  background: var(--progress-bg);
   border-radius: 4px;
   margin-bottom: 24px;
   overflow: hidden;
@@ -290,7 +309,7 @@ a {
 
 .option-btn {
   background: var(--bg-card);
-  border: 3px solid #E0E0E0;
+  border: 3px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 20px 16px;
   font-size: 1.3rem;
@@ -365,15 +384,27 @@ a {
 }
 
 .flashcard-front {
-  background: white;
+  background: linear-gradient(145deg, #f8f4ff, #eef6fb);
+  color: #2C3E50;
   font-size: 4rem;
 }
 
 .flashcard-back {
-  background: var(--yellow);
+  background: linear-gradient(145deg, #fdf6e3, #fef9ef);
+  color: #4a4031;
   transform: rotateY(180deg);
   font-size: 1.2rem;
   line-height: 1.5;
+}
+
+[data-theme="dark"] .flashcard-front {
+  background: linear-gradient(145deg, #1e2a4a, #1a2340);
+  color: #E0E0E0;
+}
+
+[data-theme="dark"] .flashcard-back {
+  background: linear-gradient(145deg, #2a2a1e, #2e2b20);
+  color: #E0D8C8;
 }
 
 .flashcard-nav {
@@ -418,7 +449,7 @@ a {
 }
 
 .tracing-canvas {
-  border: 3px solid #E0E0E0;
+  border: 3px solid var(--border-color);
   border-radius: var(--radius-sm);
   background: white;
   touch-action: none;
@@ -454,7 +485,7 @@ a {
 
 .drag-item {
   background: var(--bg-card);
-  border: 3px solid #E0E0E0;
+  border: 3px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 14px 20px;
   font-size: 1.3rem;
@@ -475,7 +506,7 @@ a {
 }
 
 .drop-zone {
-  border: 3px dashed #CCC;
+  border: 3px dashed var(--border-color);
   border-radius: var(--radius-sm);
   padding: 14px 20px;
   min-width: 60px;
@@ -522,9 +553,9 @@ a {
 }
 
 .btn-secondary {
-  background: white;
+  background: var(--bg-card);
   color: var(--text);
-  border: 2px solid #E0E0E0;
+  border: 2px solid var(--border-color);
 }
 
 .btn-success {
@@ -642,7 +673,7 @@ a {
 
 .log-item {
   padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
@@ -660,7 +691,7 @@ a {
   align-items: center;
   gap: 4px;
   padding: 12px;
-  background: #FFF8F0;
+  background: var(--badge-bg);
   border-radius: var(--radius-sm);
   min-width: 80px;
 }
@@ -707,7 +738,7 @@ a {
   font-family: inherit;
   font-size: 1rem;
   padding: 10px 14px;
-  border: 2px solid #E0E0E0;
+  border: 2px solid var(--border-color);
   border-radius: var(--radius-sm);
   width: 100%;
   max-width: 300px;
@@ -817,7 +848,7 @@ a {
 }
 
 .modal {
-  background: white;
+  background: var(--bg-card);
   border-radius: var(--radius);
   padding: 32px;
   max-width: 380px;
@@ -836,6 +867,80 @@ a {
   letter-spacing: 12px;
   max-width: 200px;
   margin: 0 auto;
+}
+
+/* Dark mode toggle */
+.theme-toggle {
+  background: var(--bg);
+  border: 2px solid var(--border-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--border-color);
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .navbar-links a:hover,
+[data-theme="dark"] .navbar-links button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .tracing-canvas {
+  background: #1e1e3a;
+}
+
+[data-theme="dark"] .tracing-guide {
+  color: #2A2A4A;
+}
+
+[data-theme="dark"] .option-btn {
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+[data-theme="dark"] .option-btn.correct {
+  background: #1a3a2a;
+  border-color: var(--green);
+}
+
+[data-theme="dark"] .option-btn.incorrect {
+  background: #3a1a1a;
+  border-color: var(--red);
+}
+
+[data-theme="dark"] .drop-zone.hover {
+  border-color: var(--blue);
+  background: rgba(69,183,209,0.15);
+}
+
+[data-theme="dark"] .drop-zone.filled {
+  background: #1a3a2a;
+}
+
+[data-theme="dark"] .drag-item.matched {
+  background: #1a3a2a;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select {
+  background: var(--input-bg);
+  color: var(--text);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .resource-badge {
+  background: rgba(69,183,209,0.15);
 }
 
 /* Responsive */
