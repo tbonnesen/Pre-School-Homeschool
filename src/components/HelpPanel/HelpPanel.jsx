@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTTS } from '../../hooks/useTTS';
+import { getHelpForActivity } from '../../data/helpTopics';
 
 const GENERIC_HELP = {
   letters: "Let's learn about letters and reading! Letters are the building blocks of words. Each letter has a name and a sound. Try sounding out each letter slowly.",
@@ -12,20 +13,63 @@ const GENERIC_HELP = {
 
 export default function HelpPanel({ activity, domainId, onClose }) {
   const { speak, stop } = useTTS();
+  const [hasSpoken, setHasSpoken] = useState(false);
 
-  const helpText = activity.help || GENERIC_HELP[domainId] || "Take your time and try your best! It's okay to make mistakes - that's how we learn!";
+  // Get topic-specific help if available
+  const topicHelp = getHelpForActivity(activity, domainId);
+
+  const helpText = topicHelp?.helpText || activity.help || GENERIC_HELP[domainId] || "Take your time and try your best! It's okay to make mistakes - that's how we learn!";
+  const helpTitle = topicHelp?.title || 'Let Me Help!';
+  const helpEmoji = topicHelp?.emoji || '💡';
+  const videos = topicHelp?.youtubeVideos || [];
 
   useEffect(() => {
-    speak(helpText);
+    if (!hasSpoken) {
+      speak(helpText);
+      setHasSpoken(true);
+    }
     return () => stop();
-  }, [helpText]);
+  }, []);
+
+  const handleSpeak = () => {
+    stop();
+    speak(helpText);
+  };
+
+  const openVideo = (videoId) => {
+    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="help-overlay" onClick={onClose}>
       <div className="help-panel" onClick={(e) => e.stopPropagation()}>
-        <div className="help-icon">💡</div>
-        <h3 className="help-title">Let Me Help!</h3>
+        <div className="help-icon">{helpEmoji}</div>
+        <h3 className="help-title">{helpTitle}</h3>
         <p className="help-text">{helpText}</p>
+
+        <button className="btn help-speak-btn" onClick={handleSpeak}>
+          🔊 Read Aloud
+        </button>
+
+        {videos.length > 0 && (
+          <div className="help-videos">
+            <h4 className="help-videos-title">🎬 Watch & Learn</h4>
+            {videos.map((video, idx) => (
+              <button
+                key={idx}
+                className="help-video-card"
+                onClick={() => openVideo(video.videoId)}
+              >
+                <span className="help-video-play">▶</span>
+                <span className="help-video-info">
+                  <span className="help-video-name">{video.title}</span>
+                  <span className="help-video-channel">{video.channel}</span>
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+
         <button className="btn btn-primary help-got-it" onClick={onClose}>
           Got it! 👍
         </button>

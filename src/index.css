@@ -997,6 +997,8 @@ a {
   text-align: center;
   box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   animation: slideUp 0.3s ease;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 .help-icon {
   font-size: 3.5rem;
@@ -1017,6 +1019,82 @@ a {
   font-size: 1.1rem;
   padding: 12px 32px;
   border-radius: 16px;
+}
+.help-speak-btn {
+  background: var(--bg);
+  border: 2px solid var(--border-color);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.help-speak-btn:hover {
+  background: var(--border-color);
+}
+.help-videos {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.help-videos-title {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.help-video-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+  background: var(--bg);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  text-align: left;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+.help-video-card:hover {
+  border-color: #FF0000;
+  background: rgba(255,0,0,0.04);
+  transform: scale(1.01);
+}
+.help-video-card:active {
+  transform: scale(0.98);
+}
+.help-video-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: #FF0000;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.help-video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.help-video-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.help-video-channel {
+  font-size: 0.85rem;
+  color: var(--text-light);
 }
 
 @keyframes slideUp {
