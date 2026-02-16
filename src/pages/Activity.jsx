@@ -7,6 +7,7 @@ import Flashcard from '../activities/Flashcard';
 import Counting from '../activities/Counting';
 import Tracing from '../activities/Tracing';
 import DragDrop from '../activities/DragDrop';
+import HelpPanel from '../components/HelpPanel/HelpPanel';
 
 const COMPONENTS = {
   multipleChoice: MultipleChoice,
@@ -20,6 +21,7 @@ export default function Activity({ completeActivity }) {
   const { domainId, activityId } = useParams();
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
+  const [showHelp, setShowHelp] = useState(false);
 
   const activity = getActivityById(domainId, activityId);
   const domain = DOMAINS[domainId];
@@ -65,12 +67,24 @@ export default function Activity({ completeActivity }) {
 
   return (
     <>
-      <button className="back-btn" onClick={() => navigate(`/domain/${domainId}`)}>
-        ← Back to {domain.title}
-      </button>
+      <div className="activity-top-bar">
+        <button className="back-btn" onClick={() => navigate(`/domain/${domainId}`)}>
+          ← Back to {domain.title}
+        </button>
+        <button className="help-btn" onClick={() => setShowHelp(true)} title="Need help? Click for a hint!">
+          💡 Help
+        </button>
+      </div>
       <h2 className="page-title">{activity.title}</h2>
       <p className="page-subtitle">{activity.instruction}</p>
       {Component && <Component activity={activity} onComplete={handleComplete} />}
+      {showHelp && (
+        <HelpPanel
+          activity={activity}
+          domainId={domainId}
+          onClose={() => setShowHelp(false)}
+        />
+      )}
     </>
   );
 }

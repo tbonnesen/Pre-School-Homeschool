@@ -60,7 +60,10 @@ function PinModal({ pin, onSuccess, onClose }) {
 }
 
 function AppInner() {
-  const { data, completeActivity, updateSettings, reset, getCompletionPercent } = useProgress();
+  const {
+    data, completeActivity, updateSettings, reset, getCompletionPercent,
+    profiles, activeProfileId, addProfile, removeProfile, setActiveProfile,
+  } = useProgress();
   const [showPin, setShowPin] = useState(false);
   const [parentMode, setParentMode] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -95,6 +98,11 @@ function AppInner() {
           updateSettings={updateSettings}
           reset={reset}
           onBack={() => setShowSettings(false)}
+          profiles={profiles}
+          activeProfileId={activeProfileId}
+          addProfile={addProfile}
+          removeProfile={removeProfile}
+          setActiveProfile={setActiveProfile}
         />
       </Layout>
     );
@@ -116,6 +124,9 @@ function AppInner() {
             <Home
               progress={data}
               getCompletionPercent={getCompletionPercent}
+              profiles={profiles}
+              activeProfileId={activeProfileId}
+              setActiveProfile={setActiveProfile}
             />
           }
         />
@@ -135,12 +146,15 @@ function AppInner() {
               <ParentDashboard
                 progress={data}
                 getCompletionPercent={getCompletionPercent}
+                profiles={profiles}
+                activeProfileId={activeProfileId}
+                setActiveProfile={setActiveProfile}
                 onNavigate={(page) => {
                   if (page === 'settings') setShowSettings(true);
                 }}
               />
             ) : (
-              <Home progress={data} getCompletionPercent={getCompletionPercent} />
+              <Home progress={data} getCompletionPercent={getCompletionPercent} profiles={profiles} activeProfileId={activeProfileId} setActiveProfile={setActiveProfile} />
             )
           }
         />

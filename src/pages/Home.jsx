@@ -6,10 +6,11 @@ import { getDailySuggestion } from '../utils/adaptive';
 const AGE_LABELS = { 0: 'All Ages', 3: 'Age 3 (Easy)', 4: 'Age 4 (Medium)', 5: 'Age 5 (Hard)' };
 const AGE_DIFFICULTY = { 3: 1, 4: 2, 5: 3 };
 
-export default function Home({ progress, getCompletionPercent }) {
+export default function Home({ progress, getCompletionPercent, profiles, activeProfileId, setActiveProfile }) {
   const navigate = useNavigate();
   const [ageFilter, setAgeFilter] = useState(0);
   const name = progress.childName || 'Friend';
+  const profileEntries = Object.entries(profiles || {});
 
   // Filter activities by age/difficulty
   const filteredActivities = {};
@@ -28,6 +29,21 @@ export default function Home({ progress, getCompletionPercent }) {
 
   return (
     <>
+      {profileEntries.length > 1 && (
+        <div className="profile-switcher">
+          {profileEntries.map(([id, p]) => (
+            <button
+              key={id}
+              className={`profile-avatar${id === activeProfileId ? ' active' : ''}`}
+              onClick={() => setActiveProfile(id)}
+            >
+              <span className="profile-avatar-emoji">{p.avatar || '🧒'}</span>
+              <span className="profile-name">{p.childName || 'Friend'}</span>
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="welcome-section">
         <h1>Hi, {name}!</h1>
         <p className="greeting">Ready to learn something fun today?</p>

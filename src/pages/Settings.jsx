@@ -1,11 +1,22 @@
 import { useState } from 'react';
 
-export default function Settings({ progress, updateSettings, reset, onBack }) {
+const AVATAR_OPTIONS = ['🧒', '👧', '👦', '🧒🏻', '👧🏻', '👦🏻', '🧒🏽', '👧🏽', '👦🏽', '🧒🏿', '👧🏿', '👦🏿', '🦸', '🧚', '🦄', '🐻'];
+
+export default function Settings({ progress, updateSettings, reset, onBack, profiles, activeProfileId, addProfile, removeProfile, setActiveProfile }) {
   const [name, setName] = useState(progress.childName || '');
   const [age, setAge] = useState(progress.childAge || 4);
   const [pin, setPin] = useState(progress.pin || '1234');
   const [saved, setSaved] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
+
+  // Add profile form
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [newAge, setNewAge] = useState(4);
+  const [newAvatar, setNewAvatar] = useState('🧒');
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+
+  const profileEntries = Object.entries(profiles || {});
 
   const handleSave = () => {
     updateSettings({ childName: name, childAge: Number(age), pin });
@@ -23,15 +34,123 @@ export default function Settings({ progress, updateSettings, reset, onBack }) {
     }
   };
 
+  const handleAddProfile = () => {
+    if (!newName.trim()) return;
+    addProfile(newName.trim(), Number(newAge), newAvatar);
+    setNewName('');
+    setNewAge(4);
+    setNewAvatar('🧒');
+    setShowAddForm(false);
+  };
+
+  const handleDeleteProfile = (id) => {
+    if (confirmDeleteId === id) {
+      removeProfile(id);
+      setConfirmDeleteId(null);
+    } else {
+      setConfirmDeleteId(id);
+      setTimeout(() => setConfirmDeleteId(null), 5000);
+    }
+  };
+
+  // Sync local state when active profile changes
+  const activeProfile = profiles?.[activeProfileId];
+
   return (
     <>
       <button className="back-btn" onClick={onBack}>
-        ← Back to Dashboard
+        &larr; Back to Dashboard
       </button>
       <h1 className="page-title">Settings</h1>
 
+      {/* Profile Management */}
       <div className="settings-section">
-        <h3>Child Profile</h3>
+        <h3>Profiles</h3>
+        <div className="profile-list">
+          {profileEntries.map(([id, p]) => (
+            <div
+              key={id}
+              className={`profile-card${id === activeProfileId ? ' active' : ''}`}
+              onClick={() => {
+                setActiveProfile(id);
+                setName(p.childName || '');
+                setAge(p.childAge || 4);
+              }}
+            >
+              <div className="profile-card-avatar">{p.avatar || '🧒'}</div>
+              <div className="profile-card-info">
+                <div className="profile-card-name">
+                  {p.childName || 'Unnamed'}
+                  {id === activeProfileId && <span className="active-badge">Active</span>}
+                </div>
+                <div className="profile-card-age">Age {p.childAge || 4}</div>
+              </div>
+              {profileEntries.length > 1 && (
+                <button
+                  className="profile-delete-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDeleteProfile(id);
+                  }}
+                >
+                  {confirmDeleteId === id ? 'Confirm?' : '🗑️'}
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {!showAddForm ? (
+          <button className="btn btn-secondary" style={{ marginTop: 12 }} onClick={() => setShowAddForm(true)}>
+            + Add Child
+          </button>
+        ) : (
+          <div className="add-profile-form">
+            <div className="form-group">
+              <label htmlFor="newName">Name</label>
+              <input
+                id="newName"
+                type="text"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                placeholder="Child's name"
+                autoFocus
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="newAge">Age</label>
+              <select id="newAge" value={newAge} onChange={(e) => setNewAge(e.target.value)}>
+                <option value={3}>3 years old</option>
+                <option value={4}>4 years old</option>
+                <option value={5}>5 years old</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Avatar</label>
+              <div className="avatar-picker">
+                {AVATAR_OPTIONS.map((emoji) => (
+                  <button
+                    key={emoji}
+                    className={`avatar-option${newAvatar === emoji ? ' selected' : ''}`}
+                    onClick={() => setNewAvatar(emoji)}
+                    type="button"
+                  >
+                    {emoji}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="btn btn-primary" onClick={handleAddProfile}>Add</button>
+              <button className="btn btn-secondary" onClick={() => setShowAddForm(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Active Profile Settings */}
+      <div className="settings-section">
+        <h3>Edit Active Profile</h3>
         <div className="form-group">
           <label htmlFor="childName">Child&apos;s Name</label>
           <input
@@ -73,7 +192,7 @@ export default function Settings({ progress, updateSettings, reset, onBack }) {
           {saved ? '✓ Saved!' : 'Save Settings'}
         </button>
         <button className="btn btn-danger" onClick={handleReset}>
-          {confirmReset ? 'Tap Again to Confirm Reset' : 'Reset All Progress'}
+          {confirmReset ? 'Tap Again to Confirm Reset' : 'Reset Active Profile Progress'}
         </button>
       </div>
     </>

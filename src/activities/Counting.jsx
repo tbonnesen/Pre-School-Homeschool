@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
+import { useTTS } from '../hooks/useTTS';
 
 export default function Counting({ activity, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -7,6 +8,8 @@ export default function Counting({ activity, onComplete }) {
   const [tapped, setTapped] = useState(new Set());
   const [correct, setCorrect] = useState(0);
   const [showCheck, setShowCheck] = useState(false);
+  const [showNudge, setShowNudge] = useState(false);
+  const { speak } = useTTS();
 
   const items = activity.data;
   const current = items[currentIndex];
@@ -17,10 +20,24 @@ export default function Counting({ activity, onComplete }) {
     setTapped(new Set());
     setCorrect(0);
     setShowCheck(false);
+    setShowNudge(false);
   }, [activity.id]);
+
+  // Show nudge hint after 8 seconds of inactivity on a question
+  useEffect(() => {
+    setShowNudge(false);
+    const timer = setTimeout(() => {
+      if (!showCheck) {
+        setShowNudge(true);
+        speak('Tap each one to count them! Touch every item you see.');
+      }
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, [currentIndex, tapped.size, showCheck]);
 
   const handleTap = (index) => {
     if (tapped.has(index) || showCheck) return;
+    setShowNudge(false);
     const newTapped = new Set([...tapped, index]);
     setTapped(newTapped);
     setCounted(newTapped.size);
@@ -78,6 +95,13 @@ export default function Counting({ activity, onComplete }) {
       {showCheck && (
         <div style={{ fontSize: '2rem', color: 'var(--green)' }}>
           Great job! ✓
+        </div>
+      )}
+
+      {showNudge && !showCheck && (
+        <div className="hint-bubble">
+          <span className="hint-icon">💡</span>
+          <span className="hint-text">Tap each {current.emoji} to count them! Touch every one you see.</span>
         </div>
       )}
     </div>

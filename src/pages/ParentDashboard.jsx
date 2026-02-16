@@ -4,7 +4,8 @@ import { getRecommendedDifficulty } from '../utils/adaptive';
 
 const DIFFICULTY_LABELS = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
 
-export default function ParentDashboard({ progress, getCompletionPercent, onNavigate }) {
+export default function ParentDashboard({ progress, getCompletionPercent, onNavigate, profiles, activeProfileId, setActiveProfile }) {
+  const profileEntries = Object.entries(profiles || {});
   const earned = getEarnedBadges(progress);
   const earnedIds = new Set(earned.map((b) => b.id));
 
@@ -27,12 +28,27 @@ export default function ParentDashboard({ progress, getCompletionPercent, onNavi
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <h1 className="page-title">Parent Dashboard</h1>
         <button className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.9rem' }} onClick={() => onNavigate('settings')}>
           Settings
         </button>
       </div>
+
+      {profileEntries.length > 1 && (
+        <div className="profile-switcher" style={{ marginBottom: 20 }}>
+          {profileEntries.map(([id, p]) => (
+            <button
+              key={id}
+              className={`profile-avatar${id === activeProfileId ? ' active' : ''}`}
+              onClick={() => setActiveProfile(id)}
+            >
+              <span className="profile-avatar-emoji">{p.avatar || '🧒'}</span>
+              <span className="profile-name">{p.childName || 'Friend'}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="dashboard-grid">
         {/* Overview */}

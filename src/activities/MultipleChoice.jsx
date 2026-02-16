@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
+import { useTTS } from '../hooks/useTTS';
 
 export default function MultipleChoice({ activity, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [correct, setCorrect] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const { speak } = useTTS();
 
   const questions = activity.data;
   const current = questions[currentIndex];
@@ -15,6 +18,7 @@ export default function MultipleChoice({ activity, onComplete }) {
     setSelected(null);
     setCorrect(0);
     setShowResult(false);
+    setShowHint(false);
   }, [activity.id]);
 
   const handleSelect = (option) => {
@@ -23,7 +27,17 @@ export default function MultipleChoice({ activity, onComplete }) {
     const isCorrect = option === current.answer;
     if (isCorrect) setCorrect((c) => c + 1);
 
+    const hasHint = !isCorrect && current.hint;
+
+    if (hasHint) {
+      setShowHint(true);
+      speak(current.hint);
+    }
+
+    const delay = hasHint ? 3000 : 1000;
+
     setTimeout(() => {
+      setShowHint(false);
       if (currentIndex + 1 < questions.length) {
         setCurrentIndex((i) => i + 1);
         setSelected(null);
@@ -32,7 +46,7 @@ export default function MultipleChoice({ activity, onComplete }) {
         const finalCorrect = isCorrect ? correct + 1 : correct;
         onComplete(finalCorrect, questions.length);
       }
-    }, 1000);
+    }, delay);
   };
 
   if (showResult) return null;
@@ -70,6 +84,12 @@ export default function MultipleChoice({ activity, onComplete }) {
           </button>
         ))}
       </div>
+      {showHint && current.hint && (
+        <div className="hint-bubble">
+          <span className="hint-icon">💡</span>
+          <span className="hint-text">{current.hint}</span>
+        </div>
+      )}
     </div>
   );
 }

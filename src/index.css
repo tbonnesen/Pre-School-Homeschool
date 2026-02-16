@@ -943,6 +943,301 @@ a {
   background: rgba(69,183,209,0.15);
 }
 
+/* Activity Top Bar */
+.activity-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Help Button */
+.help-btn {
+  background: linear-gradient(135deg, #FFF3CD, #FFE69C);
+  border: 2px solid #FFC107;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.help-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(255,193,7,0.4);
+}
+[data-theme="dark"] .help-btn {
+  background: linear-gradient(135deg, #3d3518, #4a3f1a);
+  border-color: #FFC107;
+  color: #FFE69C;
+}
+
+/* Help Panel Overlay */
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+.help-panel {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease;
+}
+.help-icon {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+}
+.help-title {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin: 0 0 16px;
+}
+.help-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 24px;
+}
+.help-got-it {
+  font-size: 1.1rem;
+  padding: 12px 32px;
+  border-radius: 16px;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hint Bubble */
+.hint-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #FFF9E6, #FFF3CD);
+  border: 2px solid #FFC107;
+  border-radius: 16px;
+  padding: 12px 20px;
+  margin-top: 16px;
+  animation: slideUp 0.3s ease;
+  text-align: left;
+}
+.hint-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.hint-text {
+  font-size: 1rem;
+  color: #664D03;
+  line-height: 1.4;
+}
+[data-theme="dark"] .hint-bubble {
+  background: linear-gradient(135deg, #3d3518, #332d14);
+  border-color: #FFC107;
+}
+[data-theme="dark"] .hint-text {
+  color: #FFE69C;
+}
+
+/* Profile Switcher */
+.profile-switcher {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-avatar-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  border: 3px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+.profile-avatar.active .profile-avatar-emoji {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.3);
+  transform: scale(1.1);
+}
+
+.profile-name {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-avatar.active .profile-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Profile Cards (Settings) */
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-card:hover {
+  border-color: var(--teal);
+}
+
+.profile-card.active {
+  border-color: var(--teal);
+  background: rgba(78, 205, 196, 0.05);
+}
+
+.profile-card-avatar {
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card-info {
+  flex: 1;
+}
+
+.profile-card-name {
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-card-age {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.active-badge {
+  font-size: 0.7rem;
+  background: var(--teal);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.profile-delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  color: var(--text-light);
+}
+
+.profile-delete-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+  color: var(--red);
+}
+
+/* Add Profile Form */
+.add-profile-form {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+/* Avatar Picker */
+.avatar-picker {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.avatar-option {
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.avatar-option:hover {
+  border-color: var(--teal);
+  transform: scale(1.1);
+}
+
+.avatar-option.selected {
+  border-color: var(--teal);
+  background: rgba(78, 205, 196, 0.1);
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .navbar-brand { font-size: 1.1rem; }
@@ -954,4 +1249,6 @@ a {
   .flashcard { width: 260px; height: 300px; }
   .resource-grid { grid-template-columns: 1fr; }
   .dashboard-grid { grid-template-columns: 1fr; }
+  .avatar-picker { grid-template-columns: repeat(6, 1fr); }
+  .profile-avatar-emoji { width: 44px; height: 44px; font-size: 1.5rem; }
 }

@@ -1,14 +1,20 @@
 import { useState, useCallback } from 'react';
-import { loadData, saveData, resetData, updateStreak } from '../utils/storage';
+import {
+  loadAppData, saveAppData, getActiveProfile, saveActiveProfile,
+  createProfile, deleteProfile, switchProfile, resetProfile, updateStreak,
+} from '../utils/storage';
 
 export function useProgress() {
-  const [data, setData] = useState(() => loadData());
+  const [appData, setAppData] = useState(() => loadAppData());
+
+  const profile = getActiveProfile(appData);
+  const data = { ...profile, pin: appData.pin };
 
   const completeActivity = useCallback((domainId, activityId, stars, correct, total) => {
-    setData((prev) => {
-      const updated = { ...prev };
+    setAppData((prev) => {
+      const p = getActiveProfile(prev);
+      const updated = { ...p };
 
-      // Mark completed
       if (!updated.completed[domainId]) updated.completed[domainId] = {};
       const existing = updated.completed[domainId][activityId];
       updated.completed[domainId][activityId] = {
@@ -17,7 +23,6 @@ export function useProgress() {
         lastPlayed: new Date().toISOString(),
       };
 
-      // Track scores for adaptive difficulty
       if (!updated.scores[domainId]) updated.scores[domainId] = {};
       const prevScore = updated.scores[domainId][activityId] || { correct: 0, total: 0 };
       updated.scores[domainId][activityId] = {
@@ -25,30 +30,32 @@ export function useProgress() {
         total: prevScore.total + total,
       };
 
-      // Activity log
       updated.activityLog = [
         { activityId, domainId, stars, timestamp: new Date().toISOString() },
         ...(updated.activityLog || []),
       ].slice(0, 100);
 
-      // Update streak
       const withStreak = updateStreak(updated);
-      saveData(withStreak);
-      return withStreak;
+      return saveActiveProfile(prev, withStreak);
     });
   }, []);
 
   const updateSettings = useCallback((settings) => {
-    setData((prev) => {
-      const updated = { ...prev, ...settings };
-      saveData(updated);
-      return updated;
+    setAppData((prev) => {
+      const { pin, ...profileSettings } = settings;
+      const p = getActiveProfile(prev);
+      const updatedProfile = { ...p, ...profileSettings };
+      let updatedApp = saveActiveProfile(prev, updatedProfile);
+      if (pin !== undefined) {
+        updatedApp = { ...updatedApp, pin };
+        saveAppData(updatedApp);
+      }
+      return updatedApp;
     });
   }, []);
 
   const reset = useCallback(() => {
-    const fresh = resetData();
-    setData(fresh);
+    setAppData((prev) => resetProfile(prev));
   }, []);
 
   const getCompletionPercent = useCallback((domainId, activities) => {
@@ -56,5 +63,31 @@ export function useProgress() {
     return activities.length > 0 ? Math.round((done / activities.length) * 100) : 0;
   }, [data]);
 
-  return { data, completeActivity, updateSettings, reset, getCompletionPercent };
+  const addProfile = useCallback((name, age, avatar) => {
+    setAppData((prev) => {
+      const result = createProfile(prev, name, age, avatar);
+      return result.appData;
+    });
+  }, []);
+
+  const removeProfile = useCallback((profileId) => {
+    setAppData((prev) => deleteProfile(prev, profileId));
+  }, []);
+
+  const setActiveProfile = useCallback((profileId) => {
+    setAppData((prev) => switchProfile(prev, profileId));
+  }, []);
+
+  return {
+    data,
+    completeActivity,
+    updateSettings,
+    reset,
+    getCompletionPercent,
+    profiles: appData.profiles,
+    activeProfileId: appData.activeProfileId,
+    addProfile,
+    removeProfile,
+    setActiveProfile,
+  };
 }
