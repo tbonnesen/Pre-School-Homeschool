@@ -1,6 +1,7 @@
 import { DOMAINS, ACTIVITIES } from '../data/curriculum';
 import { getEarnedBadges, BADGES } from '../data/achievements';
 import { getRecommendedDifficulty } from '../utils/adaptive';
+import ActivityHeatmap from '../components/ActivityHeatmap/ActivityHeatmap';
 
 const DIFFICULTY_LABELS = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
 
@@ -124,12 +125,18 @@ export default function ParentDashboard({ progress, getCompletionPercent, onNavi
           <h3>Badges & Achievements</h3>
           <div className="badge-grid">
             {Object.values(BADGES).flat().map((badge) => (
-              <div key={badge.id} className={`badge-item ${earnedIds.has(badge.id) ? '' : 'locked'}`}>
+              <div key={badge.id} className={`badge-item ${earnedIds.has(badge.id) ? '' : 'locked'}`} title={badge.description}>
                 <div className="badge-icon">{badge.icon}</div>
                 <div className="badge-title">{badge.title}</div>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Activity Heatmap */}
+        <div className="dashboard-card" style={{ gridColumn: '1 / -1' }}>
+          <h3>Activity Heatmap <span style={{ fontSize: '0.8rem', color: 'var(--text-light)', fontWeight: 400 }}>— last 12 weeks</span></h3>
+          <ActivityHeatmap activityLog={progress.activityLog || []} domains={DOMAINS} />
         </div>
       </div>
     </>

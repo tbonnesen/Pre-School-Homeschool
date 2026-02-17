@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { exportData, importData, loadAppData } from '../utils/storage';
 
 const AVATAR_OPTIONS = ['🧒', '👧', '👦', '🧒🏻', '👧🏻', '👦🏻', '🧒🏽', '👧🏽', '👦🏽', '🧒🏿', '👧🏿', '👦🏿', '🦸', '🧚', '🦄', '🐻'];
 
@@ -8,6 +9,9 @@ export default function Settings({ progress, updateSettings, reset, onBack, prof
   const [pin, setPin] = useState(progress.pin || '1234');
   const [saved, setSaved] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
+  const [backupStatus, setBackupStatus] = useState(null); // { type: 'success'|'error', msg }
+  const [confirmImport, setConfirmImport] = useState(false);
+  const fileInputRef = useRef(null);
 
   // Add profile form
   const [showAddForm, setShowAddForm] = useState(false);
@@ -51,6 +55,52 @@ export default function Settings({ progress, updateSettings, reset, onBack, prof
       setConfirmDeleteId(id);
       setTimeout(() => setConfirmDeleteId(null), 5000);
     }
+  };
+
+  const handleExport = () => {
+    try {
+      const appData = loadAppData();
+      const json = exportData(appData);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `homeschool-backup-${date}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      setBackupStatus({ type: 'success', msg: 'Backup downloaded!' });
+      setTimeout(() => setBackupStatus(null), 3000);
+    } catch (e) {
+      setBackupStatus({ type: 'error', msg: 'Export failed. Try again.' });
+    }
+  };
+
+  const handleImportClick = () => {
+    setConfirmImport(true);
+  };
+
+  const handleImportConfirm = () => {
+    setConfirmImport(false);
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        importData(ev.target.result);
+        setBackupStatus({ type: 'success', msg: 'Progress restored! Reloading…' });
+        setTimeout(() => window.location.reload(), 1200);
+      } catch (err) {
+        setBackupStatus({ type: 'error', msg: err.message || 'Import failed. Invalid file.' });
+        setTimeout(() => setBackupStatus(null), 4000);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = ''; // reset so same file can be re-selected
   };
 
   // Sync local state when active profile changes
@@ -194,6 +244,49 @@ export default function Settings({ progress, updateSettings, reset, onBack, prof
         <button className="btn btn-danger" onClick={handleReset}>
           {confirmReset ? 'Tap Again to Confirm Reset' : 'Reset Active Profile Progress'}
         </button>
+      </div>
+
+      {/* Data Backup */}
+      <div className="settings-section">
+        <h3>💾 Data Backup</h3>
+        <p style={{ color: 'var(--text-light)', fontSize: '0.9rem', marginBottom: 16 }}>
+          Export all profiles and progress to a file, or restore from a previous backup.
+          Progress is stored locally — export before switching devices.
+        </p>
+
+        {backupStatus && (
+          <div className={`backup-status ${backupStatus.type}`}>
+            {backupStatus.type === 'success' ? '✅' : '❌'} {backupStatus.msg}
+          </div>
+        )}
+
+        {confirmImport && (
+          <div className="backup-confirm">
+            <p>⚠️ This will replace <strong>all current progress</strong> with the backup file. Continue?</p>
+            <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+              <button className="btn btn-danger" onClick={handleImportConfirm}>Yes, restore backup</button>
+              <button className="btn btn-secondary" onClick={() => setConfirmImport(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
+
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <button className="btn btn-primary" onClick={handleExport}>
+            ⬇️ Export Backup
+          </button>
+          <button className="btn btn-secondary" onClick={handleImportClick}>
+            ⬆️ Import Backup
+          </button>
+        </div>
+
+        {/* Hidden file input */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".json"
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+        />
       </div>
     </>
   );

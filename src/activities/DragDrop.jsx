@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
+import { playDrop } from '../utils/sound';
 
 export default function DragDrop({ activity, onComplete }) {
   const isSequence = !!activity.data.sequence;
@@ -33,6 +34,7 @@ export default function DragDrop({ activity, onComplete }) {
     if (isSequence) {
       const slotIndex = target;
       if (dragging === sequence[slotIndex]) {
+        playDrop();
         const newPlaced = [...placed];
         newPlaced[slotIndex] = dragging;
         setPlaced(newPlaced);
@@ -46,6 +48,7 @@ export default function DragDrop({ activity, onComplete }) {
     } else {
       const pair = pairs.find((p) => p.left === target && p.right === dragging);
       if (pair) {
+        playDrop();
         setMatched((prev) => ({ ...prev, [target]: dragging }));
         setShuffled((prev) => prev.filter((s) => s !== dragging));
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
 import { useTTS } from '../hooks/useTTS';
+import { playCorrect, playWrong } from '../utils/sound';
 
 export default function MultipleChoice({ activity, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +26,8 @@ export default function MultipleChoice({ activity, onComplete }) {
     if (selected) return;
     setSelected(option);
     const isCorrect = option === current.answer;
-    if (isCorrect) setCorrect((c) => c + 1);
+    if (isCorrect) { setCorrect((c) => c + 1); playCorrect(); }
+    else playWrong();
 
     const hasHint = !isCorrect && current.hint;
 

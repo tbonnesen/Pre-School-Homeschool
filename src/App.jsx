@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Domain from './pages/Domain';
 import Activity from './pages/Activity';
 import Resources from './pages/Resources';
+import LearningPaths from './pages/LearningPaths';
 import ParentDashboard from './pages/ParentDashboard';
 import Settings from './pages/Settings';
 
@@ -63,6 +64,7 @@ function AppInner() {
   const {
     data, completeActivity, updateSettings, reset, getCompletionPercent,
     profiles, activeProfileId, addProfile, removeProfile, setActiveProfile,
+    newBadges, clearNewBadges,
   } = useProgress();
   const [showPin, setShowPin] = useState(false);
   const [parentMode, setParentMode] = useState(false);
@@ -136,9 +138,10 @@ function AppInner() {
         />
         <Route
           path="/domain/:domainId/activity/:activityId"
-          element={<Activity completeActivity={completeActivity} />}
+          element={<Activity completeActivity={completeActivity} newBadges={newBadges} clearNewBadges={clearNewBadges} />}
         />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/paths" element={<LearningPaths progress={data} />} />
         <Route
           path="/parent"
           element={

@@ -267,7 +267,7 @@ export const HELP_TOPICS = {
     ],
   },
   'weather-seasons': {
-    patterns: ['weather', 'seasons', 'day-night', 'science-weather', 'science-seasons', 'science-climate', 'science-rain-clouds'],
+    patterns: ['weather', 'seasons', 'day-night', 'science-weather', 'science-seasons', 'science-climate', 'science-rain-clouds', 'science-sky-objects', 'science-cloud-types'],
     title: 'Weather & Seasons',
     helpText: 'Weather changes every day! It can be sunny, rainy, snowy, or windy. Each season brings different weather and fun activities.',
     emoji: '🌦️',
@@ -276,7 +276,7 @@ export const HELP_TOPICS = {
     ],
   },
   'plants': {
-    patterns: ['plant-', 'what-plants-need', 'seeds-and-growing', 'fruits-vegetables', 'science-plant-', 'science-fruits-growing', 'science-seeds-sprouting'],
+    patterns: ['plant-', 'what-plants-need', 'seeds-and-growing', 'fruits-vegetables', 'science-plant-', 'science-fruits-growing', 'science-seeds-sprouting', 'science-growing-things', 'science-photosynthesis'],
     title: 'Plants & Growing',
     helpText: 'Plants need sunlight, water, and soil to grow! A tiny seed can grow into a big tree. Plants give us food, clean air, and beauty.',
     emoji: '🌱',
@@ -285,7 +285,7 @@ export const HELP_TOPICS = {
     ],
   },
   'body-health': {
-    patterns: ['body-parts', 'five-senses', 'healthy-foods', 'human-body', 'science-body-', 'science-food-groups', 'science-human-body', 'science-brain-parts', 'science-food-preservation'],
+    patterns: ['body-parts', 'five-senses', 'healthy-foods', 'human-body', 'science-body-', 'science-food-groups', 'science-human-body', 'science-brain-parts', 'science-food-preservation', 'science-bones-muscles'],
     title: 'My Body & Health',
     helpText: 'Your body is incredible! You have five senses to explore the world - seeing, hearing, smelling, tasting, and touching. Eating healthy keeps you strong!',
     emoji: '💪',
@@ -321,7 +321,7 @@ export const HELP_TOPICS = {
     ],
   },
   'science-misc': {
-    patterns: ['living-nonliving', 'light-and-shadow', 'recycling', 'simple-machines', 'simple-tools', 'solids-and-liquids', 'states-of-matter', 'magnets', 'electricity', 'colors-nature', 'dinosaur', 'butterfly-life-cycle', 'science-life-cycles', 'science-magnets', 'science-electricity', 'science-simple-machines', 'science-states-matter', 'science-colors-mixing', 'science-earth-sky', 'science-energy-sources', 'science-scientific-method', 'science-shadow-experiments', 'science-rainbow', 'science-magnifying', 'science-microscopic', 'science-dna', 'science-evolution', 'science-circuits', 'science-chemical', 'science-nature-sizes', 'science-nature-textures', 'science-dinosaur', 'science-frog-lifecycle'],
+    patterns: ['living-nonliving', 'light-and-shadow', 'recycling', 'simple-machines', 'simple-tools', 'solids-and-liquids', 'states-of-matter', 'magnets', 'electricity', 'colors-nature', 'dinosaur', 'butterfly-life-cycle', 'science-life-cycles', 'science-magnets', 'science-electricity', 'science-simple-machines', 'science-states-matter', 'science-colors-mixing', 'science-earth-sky', 'science-energy-sources', 'science-scientific-method', 'science-shadow-experiments', 'science-rainbow', 'science-magnifying', 'science-microscopic', 'science-dna', 'science-evolution', 'science-circuits', 'science-chemical', 'science-nature-sizes', 'science-nature-textures', 'science-dinosaur', 'science-frog-lifecycle', 'science-sort-living-nonliving', 'science-simple-experiments', 'science-gravity-intro', 'science-sound-waves', 'science-animal-classification'],
     title: 'Science Discovery',
     helpText: 'Science is all about asking questions and finding answers! Is it alive? Does it float? What happens when you mix colors? Let\'s find out!',
     emoji: '🔬',
@@ -378,7 +378,7 @@ export const HELP_TOPICS = {
     ],
   },
   'social-skills': {
-    patterns: ['good-listener', 'greetings', 'apologizing', 'honesty', 'conflict-resolution', 'problem-solving', 'responsibility', 'standing-up', 'words-not-hands', 'waiting-patiently', 'growth-mindset', 'leadership', 'self-care', 'bedtime-routine', 'cleaning-up', 'respecting-differences', 'social-good-listener', 'social-saying-sorry', 'social-honesty', 'social-conflict-resolution', 'social-responsibility', 'social-self-confidence', 'social-leadership', 'social-daily-routines', 'social-dealing-with-change', 'social-growth-mindset', 'social-bedtime-routine', 'social-care-belongings', 'social-listening-ears', 'social-body-language', 'social-communication-styles', 'social-good-leader', 'social-respecting-belongings', 'social-upstander', 'social-mentoring', 'social-resolving-misunderstandings', 'social-self-reflection', 'social-stereotypes', 'social-time-management', 'social-homelessness', 'social-feelings-thermometer'],
+    patterns: ['good-listener', 'greetings', 'apologizing', 'honesty', 'conflict-resolution', 'problem-solving', 'responsibility', 'standing-up', 'words-not-hands', 'waiting-patiently', 'growth-mindset', 'leadership', 'self-care', 'bedtime-routine', 'cleaning-up', 'respecting-differences', 'social-good-listener', 'social-saying-sorry', 'social-honesty', 'social-conflict-resolution', 'social-responsibility', 'social-self-confidence', 'social-leadership', 'social-daily-routines', 'social-dealing-with-change', 'social-growth-mindset', 'social-bedtime-routine', 'social-care-belongings', 'social-listening-ears', 'social-body-language', 'social-communication-styles', 'social-good-leader', 'social-respecting-belongings', 'social-upstander', 'social-mentoring', 'social-resolving-misunderstandings', 'social-self-reflection', 'social-stereotypes', 'social-time-management', 'social-homelessness', 'social-feelings-thermometer', 'social-taking-care-of-self', 'social-new-situations', 'social-asking-for-help', 'social-peer-pressure', 'social-coping-big-changes', 'social-media-advertising', 'social-cultural-celebrations'],
     title: 'Social Skills',
     helpText: 'Social skills help us get along with others! Being a good listener, saying sorry when we make mistakes, and being honest are all important.',
     emoji: '🌟',
@@ -389,7 +389,7 @@ export const HELP_TOPICS = {
 
   // ==================== MOTOR ====================
   'tracing-shapes': {
-    patterns: ['trace-hearts', 'trace-arrows', 'trace-fruits', 'trace-waves', 'trace-flowers', 'trace-crosses', 'trace-clouds', 'trace-diamonds', 'trace-weather-symbols', 'trace-geometric', 'trace-3d-shapes', 'trace-animal-shapes', 'trace-complex-shapes', 'trace-detailed-animals', 'trace-musical-notes', 'trace-bumpy', 'trace-spirals', 'trace-rainbow', 'trace-mountains', 'trace-simple-maze', 'trace-symmetry', 'trace-dots-pattern', 'trace-dotted-paths', 'trace-map-routes', 'trace-shapes', 'trace-lines', 'trace-curves', 'trace-loops', 'trace-zigzags', 'trace-path-animal', 'trace-patterns', 'finger-paint', 'finger-trace', 'dot-painting', 'connect-dots', 'copy-pattern'],
+    patterns: ['trace-hearts', 'trace-arrows', 'trace-fruits', 'trace-waves', 'trace-flowers', 'trace-crosses', 'trace-clouds', 'trace-diamonds', 'trace-weather-symbols', 'trace-geometric', 'trace-3d-shapes', 'trace-animal-shapes', 'trace-complex-shapes', 'trace-detailed-animals', 'trace-musical-notes', 'trace-bumpy', 'trace-spirals', 'trace-rainbow', 'trace-mountains', 'trace-simple-maze', 'trace-symmetry', 'trace-dots-pattern', 'trace-dotted-paths', 'trace-map-routes', 'trace-shapes', 'trace-lines', 'trace-curves', 'trace-loops', 'trace-zigzags', 'trace-path-animal', 'trace-patterns', 'finger-paint', 'finger-trace', 'dot-painting', 'connect-dots', 'copy-pattern', 'motor-trace-vehicles', 'motor-trace-seasons', 'motor-trace-word-families'],
     title: 'Tracing & Drawing Shapes',
     helpText: 'Tracing helps your fingers get stronger and steadier! Follow the lines carefully and take your time. Practice makes your hands smarter!',
     emoji: '✏️',

@@ -2029,6 +2029,215 @@ export const ACTIVITIES = {
         { question: 'In a dictionary, would "frog" come before or after "fish"? 📖', options: ['After fish', 'Before fish', 'Same place', 'Cannot tell'], answer: 'After fish', hint: 'Both start with F-I. Then S comes before R... wait, check: f-i-s vs f-r-o. I comes before R!' },
       ],
     },
+
+    // === NEW LETTERS ACTIVITIES ===
+
+    // === LETTERS D1 (Age 3) — 3 activities ===
+
+    {
+      id: 'letters-sounds-transport-d1',
+      title: 'Letter Sounds on the Go! 🚗',
+      domain: 'letters',
+      instruction: 'What sound does each vehicle start with?',
+      type: 'multipleChoice',
+      difficulty: 1,
+      data: [
+        { question: 'What sound does "Bus" start with? 🚌', options: ['/b/', '/s/', '/m/', '/t/'], answer: '/b/', hint: 'Say "bus" slowly — listen to the first sound: buh!' },
+        { question: 'What sound does "Car" start with? 🚗', options: ['/k/', '/b/', '/s/', '/d/'], answer: '/k/', hint: 'Say "car" slowly — kuh!' },
+        { question: 'What sound does "Train" start with? 🚂', options: ['/t/', '/p/', '/r/', '/f/'], answer: '/t/', hint: 'Say "train" slowly — tuh!' },
+        { question: 'What sound does "Plane" start with? ✈️', options: ['/p/', '/t/', '/b/', '/g/'], answer: '/p/', hint: 'Say "plane" slowly — puh!' },
+        { question: 'What sound does "Ship" start with? 🚢', options: ['/sh/', '/s/', '/ch/', '/h/'], answer: '/sh/', hint: 'Say "ship" — shhh!' },
+        { question: 'What sound does "Rocket" start with? 🚀', options: ['/r/', '/l/', '/w/', '/n/'], answer: '/r/', hint: 'Say "rocket" slowly — rrr!' },
+        { question: 'What sound does "Helicopter" start with? 🚁', options: ['/h/', '/k/', '/l/', '/w/'], answer: '/h/', hint: 'Say "helicopter" — huh!' },
+        { question: 'What sound does "Motorcycle" start with? 🏍️', options: ['/m/', '/n/', '/b/', '/d/'], answer: '/m/', hint: 'Say "motorcycle" — mmm!' },
+      ],
+    },
+
+    {
+      id: 'letters-name-recognition-d1',
+      title: 'My Name Starts With... ✨',
+      domain: 'letters',
+      instruction: 'Match the name to its first letter!',
+      type: 'dragDrop',
+      difficulty: 1,
+      data: {
+        items: [
+          { id: 'n1', text: '👧 Anna' },
+          { id: 'n2', text: '👦 Ben' },
+          { id: 'n3', text: '👧 Cara' },
+          { id: 'n4', text: '👦 David' },
+          { id: 'n5', text: '👧 Emma' },
+          { id: 'n6', text: '👦 Frank' },
+          { id: 'n7', text: '👧 Grace' },
+          { id: 'n8', text: '👦 Henry' },
+        ],
+        targets: [
+          { id: 't1', text: 'Letter A' },
+          { id: 't2', text: 'Letter B' },
+          { id: 't3', text: 'Letter C' },
+          { id: 't4', text: 'Letter D' },
+          { id: 't5', text: 'Letter E' },
+          { id: 't6', text: 'Letter F' },
+          { id: 't7', text: 'Letter G' },
+          { id: 't8', text: 'Letter H' },
+        ],
+      },
+    },
+
+    {
+      id: 'letters-environmental-print-d1',
+      title: 'Signs All Around Us 🛑',
+      domain: 'letters',
+      instruction: 'Can you read signs and logos you see every day?',
+      type: 'multipleChoice',
+      difficulty: 1,
+      data: [
+        { question: 'A big red sign shaped like an octagon says... 🛑', options: ['STOP', 'GO', 'FAST', 'PLAY'], answer: 'STOP', hint: 'Red means you must halt!' },
+        { question: 'A sign with an arrow pointing right means... ➡️', options: ['Go this way', 'Stop here', 'Go backward', 'Jump up'], answer: 'Go this way', hint: 'An arrow points the direction to go!' },
+        { question: 'What does "EXIT" on a green sign mean? 🚪', options: ['The way out', 'Come in', 'Sit down', 'Be quiet'], answer: 'The way out', hint: 'Where you leave a building!' },
+        { question: 'A sign that says "OPEN" on a shop door means... 🏪', options: ['You can go in', 'Stay out', 'It is nighttime', 'It broke down'], answer: 'You can go in', hint: 'The store is ready for visitors!' },
+        { question: 'What does a sign with "PUSH" on a door mean? 🚪', options: ['Press the door to open it', 'Pull the door', 'Kick the door', 'Knock on the door'], answer: 'Press the door to open it', hint: 'Use your hands to press it forward!' },
+        { question: 'A yellow triangle sign means... ⚠️', options: ['Warning — be careful!', 'Party time!', 'Snack time', 'Bedtime'], answer: 'Warning — be careful!', hint: 'Yellow means pay attention!' },
+        { question: 'What does the sign "CLOSED" mean on a store? 🔒', options: ['The store is not open right now', 'Come right in', 'Free stuff inside', 'The store is new'], answer: 'The store is not open right now', hint: 'The opposite of open!' },
+        { question: 'A sign at the park that says "NO RUNNING" means... 🏃‍♂️', options: ['Walk, do not run', 'Run faster', 'Run everywhere', 'No one can come in'], answer: 'Walk, do not run', hint: 'NO before a word means do not do it!' },
+      ],
+    },
+
+    // === LETTERS D2 (Age 4) — 3 activities ===
+
+    {
+      id: 'letters-compound-words-build-d2',
+      title: 'Build Compound Words 🧱',
+      domain: 'letters',
+      instruction: 'Put two small words together to make one big word!',
+      type: 'dragDrop',
+      difficulty: 2,
+      data: {
+        items: [
+          { id: 'w1', text: '☀️ Sun + Flower' },
+          { id: 'w2', text: '🌈 Rain + Bow' },
+          { id: 'w3', text: '⭐ Star + Fish' },
+          { id: 'w4', text: '🧁 Cup + Cake' },
+          { id: 'w5', text: '🏀 Basket + Ball' },
+          { id: 'w6', text: '🦋 Butter + Fly' },
+          { id: 'w7', text: '🍓 Straw + Berry' },
+          { id: 'w8', text: '👣 Foot + Print' },
+        ],
+        targets: [
+          { id: 't1', text: '🌻 Sunflower' },
+          { id: 't2', text: '🌈 Rainbow' },
+          { id: 't3', text: '⭐ Starfish' },
+          { id: 't4', text: '🧁 Cupcake' },
+          { id: 't5', text: '🏀 Basketball' },
+          { id: 't6', text: '🦋 Butterfly' },
+          { id: 't7', text: '🍓 Strawberry' },
+          { id: 't8', text: '👣 Footprint' },
+        ],
+      },
+    },
+
+    {
+      id: 'letters-syllable-counting-d2',
+      title: 'Clap the Syllables! 👏',
+      domain: 'letters',
+      instruction: 'How many syllable claps does each word have?',
+      type: 'multipleChoice',
+      difficulty: 2,
+      data: [
+        { question: 'How many syllables in "cat"? 🐱', options: ['1', '2', '3', '4'], answer: '1', hint: 'Say it and clap: cat. Just one clap!' },
+        { question: 'How many syllables in "tiger"? 🐯', options: ['2', '1', '3', '4'], answer: '2', hint: 'Clap it out: ti-ger. Two claps!' },
+        { question: 'How many syllables in "elephant"? 🐘', options: ['3', '1', '2', '4'], answer: '3', hint: 'Clap: el-e-phant. Three claps!' },
+        { question: 'How many syllables in "dog"? 🐶', options: ['1', '2', '3', '4'], answer: '1', hint: 'Say it: dog. Just one clap!' },
+        { question: 'How many syllables in "butterfly"? 🦋', options: ['3', '1', '2', '4'], answer: '3', hint: 'Clap: but-ter-fly. Three claps!' },
+        { question: 'How many syllables in "banana"? 🍌', options: ['3', '1', '2', '4'], answer: '3', hint: 'Clap: ba-na-na. Three claps!' },
+        { question: 'How many syllables in "fish"? 🐟', options: ['1', '2', '3', '4'], answer: '1', hint: 'Say it: fish. Just one clap!' },
+        { question: 'How many syllables in "alligator"? 🐊', options: ['4', '1', '2', '3'], answer: '4', hint: 'Clap: al-li-ga-tor. Four claps!' },
+        { question: 'How many syllables in "pumpkin"? 🎃', options: ['2', '1', '3', '4'], answer: '2', hint: 'Clap: pump-kin. Two claps!' },
+        { question: 'How many syllables in "watermelon"? 🍉', options: ['4', '2', '3', '5'], answer: '4', hint: 'Clap: wa-ter-mel-on. Four claps!' },
+      ],
+    },
+
+    {
+      id: 'letters-sight-word-reading-d2',
+      title: 'Read Sight Words 👀',
+      domain: 'letters',
+      instruction: 'Learn to read these important words by sight!',
+      type: 'flashcard',
+      difficulty: 2,
+      data: [
+        { front: '👁️ I', back: 'I — means ME! "I like to play." 🧒' },
+        { front: '📖 the', back: 'the — the most common word! "The cat sat." 🐱' },
+        { front: '➕ and', back: 'and — connects things! "Red and blue." 🔴🔵' },
+        { front: '✅ is', back: 'is — tells what something IS! "It is big." 🐘' },
+        { front: '👀 see', back: 'see — use your eyes! "I see a bird." 🐦' },
+        { front: '🏃 can', back: 'can — means able to! "I can run." 🏃' },
+        { front: '👍 like', back: 'like — means enjoy! "I like cake." 🎂' },
+        { front: '🤏 a', back: 'a — just one! "I have a dog." 🐕' },
+        { front: '👆 we', back: 'we — means you and me! "We play together." 🧒🧒' },
+        { front: '⬅️ to', back: 'to — shows direction! "Go to the park." 🏞️' },
+      ],
+    },
+
+    // === LETTERS D3 (Age 5) — 3 activities ===
+
+    {
+      id: 'letters-reading-passages-d3',
+      title: 'Read Short Stories 📚',
+      domain: 'letters',
+      instruction: 'Read the story and answer the question!',
+      type: 'multipleChoice',
+      difficulty: 3,
+      data: [
+        { question: '"The red bird sat in the tree. It sang a pretty song." — Where was the bird? 🐦', options: ['In the tree', 'On the ground', 'In the water', 'On a house'], answer: 'In the tree', hint: 'Read the first sentence again — "sat in the..."' },
+        { question: '"Tom has a big dog. The dog likes to run and play." — What does the dog like? 🐕', options: ['To run and play', 'To sleep all day', 'To eat fish', 'To read books'], answer: 'To run and play', hint: 'The second sentence tells you!' },
+        { question: '"It is cold outside. Mia puts on her coat and hat." — Why does Mia dress warm? ❄️', options: ['It is cold outside', 'It is hot', 'She is going swimming', 'She likes hats'], answer: 'It is cold outside', hint: 'Read the first sentence for the reason!' },
+        { question: '"Dad made pancakes. They were yummy! We ate them all." — Who made pancakes? 🥞', options: ['Dad', 'Mom', 'The kids', 'No one'], answer: 'Dad', hint: 'The very first word tells you who!' },
+        { question: '"The cat hid under the bed. It was scared of the loud noise." — Why did the cat hide? 🐱', options: ['The loud noise scared it', 'It was sleepy', 'It wanted food', 'It was playing'], answer: 'The loud noise scared it', hint: 'What was the cat scared of?' },
+        { question: '"We went to the zoo. We saw lions, bears, and monkeys." — Where did they go? 🦁', options: ['The zoo', 'The store', 'The beach', 'School'], answer: 'The zoo', hint: 'Read the first sentence!' },
+        { question: '"Sam found a shell at the beach. It was pink and shiny." — What color was the shell? 🐚', options: ['Pink', 'Blue', 'Green', 'White'], answer: 'Pink', hint: 'The second sentence describes the shell!' },
+        { question: '"The frog jumped into the pond. Splash! The water was cool." — What did the frog jump into? 🐸', options: ['The pond', 'A pool', 'A bucket', 'A lake'], answer: 'The pond', hint: 'Read the first sentence — "jumped into the..."' },
+      ],
+    },
+
+    {
+      id: 'letters-writing-prompts-d3',
+      title: 'Writing Starters ✏️',
+      domain: 'letters',
+      instruction: 'Learn about writing sentences with these prompts!',
+      type: 'flashcard',
+      difficulty: 3,
+      data: [
+        { front: '🐕 My Pet', back: 'Try writing: "My pet is a ___. It likes to ___."' },
+        { front: '🍕 Favorite Food', back: 'Try writing: "I like to eat ___. It tastes ___."' },
+        { front: '🏞️ Fun Day', back: 'Try writing: "Today I went to ___. I saw ___."' },
+        { front: '👨‍👩‍👧 My Family', back: 'Try writing: "My family has ___. We like to ___."' },
+        { front: '🧸 Favorite Toy', back: 'Try writing: "My favorite toy is ___. I play with it ___."' },
+        { front: '🌧️ The Weather', back: 'Try writing: "Today it is ___. I feel ___ about it."' },
+        { front: '🦸 Superhero Me', back: 'Try writing: "If I were a superhero, I would ___."' },
+        { front: '🌙 Before Bed', back: 'Try writing: "At bedtime I ___. Then I ___."' },
+      ],
+    },
+
+    {
+      id: 'letters-dictionary-abc-order-d3',
+      title: 'ABC Order Dictionary 📖',
+      domain: 'letters',
+      instruction: 'Which word comes FIRST in alphabetical order?',
+      type: 'multipleChoice',
+      difficulty: 3,
+      data: [
+        { question: 'Which comes first in ABC order? 🔤', options: ['apple', 'banana', 'cherry', 'dog'], answer: 'apple', hint: 'A comes before B, C, and D!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['elephant', 'fish', 'giraffe', 'horse'], answer: 'elephant', hint: 'E comes before F, G, and H!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['ice', 'jungle', 'kite', 'lemon'], answer: 'ice', hint: 'I comes before J, K, and L!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['bear', 'bird', 'boat', 'box'], answer: 'bear', hint: 'They all start with B — look at the SECOND letter! E comes before I, O!' },
+        { question: 'Which comes LAST in ABC order? 🔤', options: ['zebra', 'apple', 'monkey', 'turtle'], answer: 'zebra', hint: 'Z is the last letter of the alphabet!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['cat', 'cup', 'cow', 'car'], answer: 'car', hint: 'All start with C — check the second letter. A comes before A, O, U!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['nest', 'orange', 'pencil', 'queen'], answer: 'nest', hint: 'N comes before O, P, and Q!' },
+        { question: 'Put these in order. Which is SECOND? ant, bat, cat, dog 📋', options: ['bat', 'ant', 'cat', 'dog'], answer: 'bat', hint: 'A is first, then B, then C, then D!' },
+        { question: 'Which comes first in ABC order? 🔤', options: ['map', 'moon', 'milk', 'mug'], answer: 'map', hint: 'All start with M — check the second letter. A comes before I, O, U!' },
+        { question: 'In a dictionary, would "frog" come before or after "fish"? 📖', options: ['After fish', 'Before fish', 'Same place', 'Cannot tell'], answer: 'After fish', hint: 'Both start with F-I. Then S comes before R... wait, check: f-i-s vs f-r-o. I comes before R!' },
+      ],
+    },
   ],
 
   math: [
@@ -6065,6 +6274,279 @@ export const ACTIVITIES = {
     ],
   },
 },
+
+
+    // === NEW SCIENCE ACTIVITIES ===
+
+    // === NEW SCIENCE D1 (Age 3) — 4 activities ===
+
+    {
+      id: 'science-sky-objects-d1',
+      title: 'What\'s in the Sky? ⭐',
+      domain: 'science',
+      instruction: 'Learn about things you can see in the sky!',
+      type: 'flashcard',
+      difficulty: 1,
+      data: [
+        { front: '☀️ Sun', back: 'The Sun is a big bright star that gives us light and warmth during the day!' },
+        { front: '🌙 Moon', back: 'The Moon shines at night and changes shape — sometimes round, sometimes a sliver!' },
+        { front: '⭐ Stars', back: 'Stars are tiny twinkling lights in the night sky — they are actually very far away!' },
+        { front: '☁️ Clouds', back: 'Clouds are white and fluffy — they float in the sky and are made of tiny water drops!' },
+        { front: '🌈 Rainbow', back: 'A rainbow appears after rain — it has red, orange, yellow, green, blue, and purple!' },
+        { front: '✈️ Airplane', back: 'Airplanes fly high in the sky carrying people to faraway places!' },
+        { front: '🦅 Birds', back: 'Birds fly through the sky using their wings — some fly very high!' },
+        { front: '🪁 Kite', back: 'A kite flies in the sky when the wind blows — you hold the string!' },
+      ],
+    },
+
+    {
+      id: 'science-animal-movements-d1',
+      title: 'How Animals Move 🐠',
+      domain: 'science',
+      instruction: 'How does each animal get around?',
+      type: 'multipleChoice',
+      difficulty: 1,
+      data: [
+        { question: 'How does a fish move? 🐟', options: ['It swims', 'It flies', 'It hops', 'It drives'], answer: 'It swims', hint: 'Fish live in water and use their fins!' },
+        { question: 'How does a bird move? 🐦', options: ['It flies', 'It swims', 'It rolls', 'It digs'], answer: 'It flies', hint: 'Birds have wings to go up in the sky!' },
+        { question: 'How does a frog move? 🐸', options: ['It hops', 'It flies', 'It slithers', 'It rolls'], answer: 'It hops', hint: 'Frogs have strong back legs to jump!' },
+        { question: 'How does a snake move? 🐍', options: ['It slithers', 'It hops', 'It flies', 'It walks'], answer: 'It slithers', hint: 'Snakes have no legs — they wiggle along the ground!' },
+        { question: 'How does a horse move fast? 🐴', options: ['It gallops', 'It swims', 'It flies', 'It slithers'], answer: 'It gallops', hint: 'Horses run fast on their four legs!' },
+        { question: 'How does a kangaroo move? 🦘', options: ['It jumps', 'It flies', 'It crawls', 'It rolls'], answer: 'It jumps', hint: 'Kangaroos have big strong back legs for bouncing!' },
+        { question: 'How does a penguin move on land? 🐧', options: ['It waddles', 'It flies', 'It gallops', 'It slithers'], answer: 'It waddles', hint: 'Penguins walk with a funny side-to-side step!' },
+        { question: 'How does a snail move? 🐌', options: ['It slides slowly', 'It runs fast', 'It flies', 'It jumps'], answer: 'It slides slowly', hint: 'Snails move very slowly on one slimy foot!' },
+      ],
+    },
+
+    {
+      id: 'science-growing-things-d1',
+      title: 'Things That Grow 🌱',
+      domain: 'science',
+      instruction: 'What things can grow bigger?',
+      type: 'multipleChoice',
+      difficulty: 1,
+      data: [
+        { question: 'Do puppies grow bigger? 🐕', options: ['Yes! Puppies grow into dogs', 'No, they stay tiny', 'Only sometimes', 'They shrink'], answer: 'Yes! Puppies grow into dogs', hint: 'Puppies are baby dogs — they get bigger!' },
+        { question: 'Do rocks grow? 🪨', options: ['No, rocks do not grow', 'Yes, very fast', 'Only at night', 'Only in water'], answer: 'No, rocks do not grow', hint: 'Rocks are not alive, so they stay the same!' },
+        { question: 'Do flowers grow? 🌸', options: ['Yes! From tiny seeds', 'No, they never change', 'Only in winter', 'They shrink'], answer: 'Yes! From tiny seeds', hint: 'Plant a seed and watch it sprout!' },
+        { question: 'Do YOU grow? 🧒', options: ['Yes! Kids grow taller', 'No, people stay the same', 'Only grown-ups grow', 'Only babies grow'], answer: 'Yes! Kids grow taller', hint: 'Every year you get a little taller!' },
+        { question: 'Does a tadpole grow? 🐸', options: ['Yes! Into a frog', 'No, it stays a tadpole', 'Into a fish', 'Into a bird'], answer: 'Yes! Into a frog', hint: 'Tadpoles change a LOT as they grow up!' },
+        { question: 'Does a toy car grow? 🚗', options: ['No, toys do not grow', 'Yes, into a real car', 'Only at night', 'Yes, very slowly'], answer: 'No, toys do not grow', hint: 'Toys are not alive — they stay the same size!' },
+        { question: 'Does a tree grow? 🌳', options: ['Yes! Trees grow very tall', 'No, trees never change', 'Only short trees', 'Trees shrink'], answer: 'Yes! Trees grow very tall', hint: 'Trees start as tiny seeds and become huge!' },
+        { question: 'What do living things need to grow? 💧', options: ['Food and water', 'Batteries', 'Paint', 'Glue'], answer: 'Food and water', hint: 'Just like you need meals and drinks!' },
+      ],
+    },
+
+    {
+      id: 'science-sort-living-nonliving-d1',
+      title: 'Living or Not? 🌿',
+      domain: 'science',
+      instruction: 'Sort these into living and not living!',
+      type: 'dragDrop',
+      difficulty: 1,
+      data: {
+        items: [
+          { id: 'l1', text: '🐶 Dog' },
+          { id: 'l2', text: '🪨 Rock' },
+          { id: 'l3', text: '🌸 Flower' },
+          { id: 'l4', text: '🪑 Chair' },
+          { id: 'l5', text: '🐱 Cat' },
+          { id: 'l6', text: '📱 Phone' },
+          { id: 'l7', text: '🌳 Tree' },
+          { id: 'l8', text: '🧸 Teddy Bear' },
+        ],
+        targets: [
+          { id: 't1', text: '🌿 Living' },
+          { id: 't2', text: '🚫 Not Living' },
+          { id: 't3', text: '🌿 Living' },
+          { id: 't4', text: '🚫 Not Living' },
+          { id: 't5', text: '🌿 Living' },
+          { id: 't6', text: '🚫 Not Living' },
+          { id: 't7', text: '🌿 Living' },
+          { id: 't8', text: '🚫 Not Living' },
+        ],
+      },
+    },
+
+    // === NEW SCIENCE D2 (Age 4) — 4 activities ===
+
+    {
+      id: 'science-simple-experiments-d2',
+      title: 'Kitchen Science 🧪',
+      domain: 'science',
+      instruction: 'What happens in these fun experiments?',
+      type: 'multipleChoice',
+      difficulty: 2,
+      data: [
+        { question: 'What happens when you mix baking soda and vinegar? 🌋', options: ['It fizzes and bubbles!', 'Nothing happens', 'It turns to ice', 'It disappears'], answer: 'It fizzes and bubbles!', hint: 'The two ingredients make gas bubbles — like a mini volcano!' },
+        { question: 'What happens when you put oil in water? 🫗', options: ['The oil floats on top', 'They mix together', 'The water disappears', 'The oil sinks'], answer: 'The oil floats on top', hint: 'Oil is lighter than water and will not mix in!' },
+        { question: 'What happens to an egg in vinegar for a day? 🥚', options: ['The shell dissolves', 'It hatches', 'It turns gold', 'Nothing changes'], answer: 'The shell dissolves', hint: 'Vinegar is acidic and eats away the hard shell!' },
+        { question: 'What happens when you put celery in colored water? 🥬', options: ['The celery changes color', 'The celery shrinks', 'The water freezes', 'Nothing happens'], answer: 'The celery changes color', hint: 'Plants drink water up through their stems!' },
+        { question: 'What happens when you freeze water? 🧊', options: ['It becomes ice', 'It disappears', 'It becomes gas', 'It stays the same'], answer: 'It becomes ice', hint: 'When water gets very cold, it turns solid!' },
+        { question: 'What happens when you hold a mirror near your mouth and breathe? 🪞', options: ['It fogs up', 'It breaks', 'It changes color', 'Nothing happens'], answer: 'It fogs up', hint: 'Your warm breath has tiny water drops that show on the cool mirror!' },
+        { question: 'If you rub a balloon on your hair, what can it pick up? 🎈', options: ['Small pieces of paper', 'Heavy books', 'Water', 'Rocks'], answer: 'Small pieces of paper', hint: 'Rubbing creates static electricity — it makes things stick!' },
+        { question: 'What happens to butter when you heat it? 🧈', options: ['It melts into liquid', 'It gets harder', 'It disappears', 'It turns green'], answer: 'It melts into liquid', hint: 'Heat makes solid things turn soft and runny!' },
+      ],
+    },
+
+    {
+      id: 'science-bones-muscles-d2',
+      title: 'Bones and Muscles 💪',
+      domain: 'science',
+      instruction: 'Learn about the bones and muscles inside you!',
+      type: 'flashcard',
+      difficulty: 2,
+      data: [
+        { front: '🦴 Bones', back: 'Your body has about 206 bones — they hold you up like a frame!' },
+        { front: '💪 Muscles', back: 'Muscles are attached to bones — they pull on bones to help you move!' },
+        { front: '💀 Skull', back: 'Your skull is the bone that protects your brain — feel the top of your head!' },
+        { front: '🦷 Teeth', back: 'Teeth are the hardest things in your body — they help you chew food!' },
+        { front: '🫁 Ribs', back: 'Ribs are curved bones around your chest — they protect your heart and lungs!' },
+        { front: '🦵 Leg Bones', back: 'Your leg has a big strong bone called the femur — the longest bone in your body!' },
+        { front: '🤸 Joints', back: 'Joints are where two bones meet — like your elbow and knee, they let you bend!' },
+        { front: '🏋️ Exercise', back: 'Moving and playing makes your bones and muscles stronger — exercise every day!' },
+      ],
+    },
+
+    {
+      id: 'science-plant-vs-animal-d2',
+      title: 'Plants vs Animals 🌿🐾',
+      domain: 'science',
+      instruction: 'Sort these facts — plant or animal?',
+      type: 'dragDrop',
+      difficulty: 2,
+      data: {
+        items: [
+          { id: 'p1', text: '🌞 Makes own food from sunlight' },
+          { id: 'p2', text: '🏃 Moves around to find food' },
+          { id: 'p3', text: '🌱 Has roots in the ground' },
+          { id: 'p4', text: '👀 Has eyes to see' },
+          { id: 'p5', text: '🍃 Has green leaves' },
+          { id: 'p6', text: '🧠 Has a brain' },
+          { id: 'p7', text: '🌸 Grows flowers or fruit' },
+          { id: 'p8', text: '🔊 Can make sounds' },
+        ],
+        targets: [
+          { id: 't1', text: '🌿 Plant' },
+          { id: 't2', text: '🐾 Animal' },
+          { id: 't3', text: '🌿 Plant' },
+          { id: 't4', text: '🐾 Animal' },
+          { id: 't5', text: '🌿 Plant' },
+          { id: 't6', text: '🐾 Animal' },
+          { id: 't7', text: '🌿 Plant' },
+          { id: 't8', text: '🐾 Animal' },
+        ],
+      },
+    },
+
+    {
+      id: 'science-cloud-types-d2',
+      title: 'Types of Clouds ☁️',
+      domain: 'science',
+      instruction: 'Learn about different kinds of clouds!',
+      type: 'multipleChoice',
+      difficulty: 2,
+      data: [
+        { question: 'Fluffy white clouds that look like cotton balls are called... ☁️', options: ['Cumulus', 'Stratus', 'Cirrus', 'Nimbus'], answer: 'Cumulus', hint: 'These puffy clouds usually mean nice weather!' },
+        { question: 'Flat gray clouds that cover the whole sky are called... 🌫️', options: ['Stratus', 'Cumulus', 'Cirrus', 'Fog'], answer: 'Stratus', hint: 'They spread out in layers like a blanket!' },
+        { question: 'Thin wispy clouds very high in the sky are called... 🌤️', options: ['Cirrus', 'Cumulus', 'Stratus', 'Rain clouds'], answer: 'Cirrus', hint: 'They look like white hair or feathers way up high!' },
+        { question: 'Dark heavy clouds that bring rain are called... ⛈️', options: ['Nimbus clouds', 'Cirrus clouds', 'Fog', 'Wind clouds'], answer: 'Nimbus clouds', hint: 'When clouds get dark and heavy, rain is coming!' },
+        { question: 'What are clouds made of? 💧', options: ['Tiny water drops', 'Cotton', 'Smoke', 'Dust'], answer: 'Tiny water drops', hint: 'Water from the ground goes up and makes clouds!' },
+        { question: 'Which cloud might mean a thunderstorm? ⛈️', options: ['Big dark cumulonimbus', 'Thin white cirrus', 'Small fluffy cumulus', 'No clouds at all'], answer: 'Big dark cumulonimbus', hint: 'The tallest, darkest clouds bring storms!' },
+        { question: 'Fog is really a cloud that is... 🌫️', options: ['On the ground', 'Very high up', 'Invisible', 'Only at night'], answer: 'On the ground', hint: 'When a cloud comes all the way down to earth!' },
+        { question: 'On a sunny day with no clouds, the sky looks... ☀️', options: ['Clear and blue', 'Dark gray', 'Red', 'Green'], answer: 'Clear and blue', hint: 'No clouds means you can see the blue sky!' },
+      ],
+    },
+
+    // === NEW SCIENCE D3 (Age 5) — 4 activities ===
+
+    {
+      id: 'science-gravity-intro-d3',
+      title: 'Gravity: Why Things Fall 🌍',
+      domain: 'science',
+      instruction: 'Learn about the invisible force called gravity!',
+      type: 'multipleChoice',
+      difficulty: 3,
+      data: [
+        { question: 'When you drop a ball, it falls down because of... 🌍', options: ['Gravity', 'Wind', 'Magic', 'Electricity'], answer: 'Gravity', hint: 'An invisible pulling force from the Earth!' },
+        { question: 'Gravity pulls everything toward the... ⬇️', options: ['Ground (center of Earth)', 'Sky', 'Moon', 'Sun'], answer: 'Ground (center of Earth)', hint: 'Things always fall DOWN, not up!' },
+        { question: 'What would happen without gravity? 🧑‍🚀', options: ['Everything would float away', 'Everything would be heavier', 'Nothing would change', 'It would rain all the time'], answer: 'Everything would float away', hint: 'Astronauts float in space because gravity is very weak there!' },
+        { question: 'If you drop a feather and a rock, which falls faster? 🪶🪨', options: ['The rock (usually)', 'The feather', 'Both exactly the same', 'Neither falls'], answer: 'The rock (usually)', hint: 'Air slows the feather down, but gravity pulls the rock fast!' },
+        { question: 'Why do you come back down when you jump? 🦘', options: ['Gravity pulls you back', 'The ground pushes you', 'Your shoes are heavy', 'The air pushes you down'], answer: 'Gravity pulls you back', hint: 'The same force that pulls a ball down pulls you too!' },
+        { question: 'Does gravity work on water? 💧', options: ['Yes — that is why rain falls down', 'No — water is too light', 'Only in oceans', 'Only when it is cold'], answer: 'Yes — that is why rain falls down', hint: 'Rivers flow downhill because of gravity too!' },
+        { question: 'Who is famous for discovering how gravity works? 🍎', options: ['Isaac Newton', 'Albert Einstein', 'Thomas Edison', 'Benjamin Franklin'], answer: 'Isaac Newton', hint: 'Legend says an apple fell on his head!' },
+        { question: 'The Moon stays near Earth because of... 🌙', options: ['Gravity pulling it', 'A giant rope', 'Magnets', 'Wind'], answer: 'Gravity pulling it', hint: 'Earth\'s gravity reaches all the way to the Moon!' },
+      ],
+    },
+
+    {
+      id: 'science-sound-waves-d3',
+      title: 'How Sound Travels 🔊',
+      domain: 'science',
+      instruction: 'Learn about sound and how we hear!',
+      type: 'flashcard',
+      difficulty: 3,
+      data: [
+        { front: '🔊 Sound', back: 'Sound is made when something vibrates — shakes back and forth really fast!' },
+        { front: '〰️ Sound Waves', back: 'Vibrations travel through the air in waves — like ripples in a pond!' },
+        { front: '👂 Ears', back: 'Your ears catch sound waves and send signals to your brain so you can hear!' },
+        { front: '🥁 Loud Sounds', back: 'Big vibrations make loud sounds — like a drum or a shout!' },
+        { front: '🤫 Quiet Sounds', back: 'Small vibrations make quiet sounds — like a whisper or a rustling leaf!' },
+        { front: '⚡ Speed of Sound', back: 'Sound travels fast but not as fast as light — that is why you see lightning before hearing thunder!' },
+        { front: '🏔️ Echo', back: 'An echo happens when sound waves bounce off something and come back to your ears!' },
+        { front: '🎸 Pitch', back: 'Pitch is how high or low a sound is — a mouse squeak is high, a lion roar is low!' },
+      ],
+    },
+
+    {
+      id: 'science-animal-classification-d3',
+      title: 'Classifying Animals 🦁',
+      domain: 'science',
+      instruction: 'Sort animals into their groups!',
+      type: 'dragDrop',
+      difficulty: 3,
+      data: {
+        items: [
+          { id: 'a1', text: '🐕 Dog' },
+          { id: 'a2', text: '🐦 Robin' },
+          { id: 'a3', text: '🐍 Snake' },
+          { id: 'a4', text: '🐟 Salmon' },
+          { id: 'a5', text: '🐱 Cat' },
+          { id: 'a6', text: '🦅 Eagle' },
+          { id: 'a7', text: '🐢 Turtle' },
+          { id: 'a8', text: '🐸 Frog' },
+        ],
+        targets: [
+          { id: 't1', text: '🐾 Mammal (fur, milk)' },
+          { id: 't2', text: '🐦 Bird (feathers, wings)' },
+          { id: 't3', text: '🦎 Reptile (scales, cold)' },
+          { id: 't4', text: '🐟 Fish (gills, fins)' },
+          { id: 't5', text: '🐾 Mammal (fur, milk)' },
+          { id: 't6', text: '🐦 Bird (feathers, wings)' },
+          { id: 't7', text: '🦎 Reptile (scales, cold)' },
+          { id: 't8', text: '🐸 Amphibian (land + water)' },
+        ],
+      },
+    },
+
+    {
+      id: 'science-photosynthesis-intro-d3',
+      title: 'How Plants Make Food 🌞',
+      domain: 'science',
+      instruction: 'Learn how plants make their own food!',
+      type: 'multipleChoice',
+      difficulty: 3,
+      data: [
+        { question: 'Plants make their food using a process called... 🌿', options: ['Photosynthesis', 'Cooking', 'Shopping', 'Breathing'], answer: 'Photosynthesis', hint: 'Photo means light, synthesis means making — making food from light!' },
+        { question: 'What do plants need from the sky to make food? ☀️', options: ['Sunlight', 'Rain only', 'Wind', 'Stars'], answer: 'Sunlight', hint: 'The energy from the Sun powers the whole process!' },
+        { question: 'What do plants take in from the soil through their roots? 💧', options: ['Water', 'Rocks', 'Bugs', 'Sand'], answer: 'Water', hint: 'Roots drink up water like a straw!' },
+        { question: 'What gas do plants breathe in from the air? 💨', options: ['Carbon dioxide', 'Oxygen', 'Helium', 'Nitrogen'], answer: 'Carbon dioxide', hint: 'We breathe out this gas, and plants use it!' },
+        { question: 'What gas do plants release that we need to breathe? 🌬️', options: ['Oxygen', 'Carbon dioxide', 'Helium', 'Smoke'], answer: 'Oxygen', hint: 'Plants give us the air we breathe!' },
+        { question: 'Where does photosynthesis mainly happen in a plant? 🍃', options: ['In the leaves', 'In the roots', 'In the flowers', 'In the bark'], answer: 'In the leaves', hint: 'Leaves are green because of a special chemical that catches sunlight!' },
+        { question: 'What makes leaves green? 🟢', options: ['Chlorophyll', 'Paint', 'Water', 'Dirt'], answer: 'Chlorophyll', hint: 'This green chemical helps catch sunlight for food-making!' },
+        { question: 'Why are plants so important for animals and people? 🌍', options: ['They make oxygen and food', 'They are pretty to look at', 'They make noise', 'They keep the ground warm'], answer: 'They make oxygen and food', hint: 'Without plants, we would have no air to breathe or food to eat!' },
+      ],
+    },
   ],
 
   social: [
@@ -8040,6 +8522,222 @@ export const ACTIVITIES = {
     { front: '🌈 Be Kind to Yourself', back: 'When you reflect, don\'t be too hard on yourself. You are doing your best and that is enough!' },
   ],
 },
+
+
+    // === NEW SOCIAL ACTIVITIES ===
+
+    // === NEW SOCIAL D1 (Age 3) — 3 activities ===
+
+    {
+      id: 'social-weather-feelings-d1',
+      title: 'Rainy Days and Happy Days 🌈',
+      domain: 'social',
+      instruction: 'How does the weather make us feel?',
+      type: 'flashcard',
+      difficulty: 1,
+      data: [
+        { front: '☀️ Sunny Day', back: 'Sunny days can make us feel happy and excited to play outside!' },
+        { front: '🌧️ Rainy Day', back: 'Rainy days are great for cozy time inside — reading books and doing puzzles!' },
+        { front: '❄️ Snowy Day', back: 'Snow makes many kids feel excited — you can build snowmen and have fun!' },
+        { front: '⛈️ Stormy Day', back: 'Thunder can feel scary — it is okay! Stay inside and you are safe.' },
+        { front: '🌫️ Foggy Day', back: 'Fog can feel mysterious and quiet — the world looks like a soft cloud!' },
+        { front: '🌬️ Windy Day', back: 'Windy days are perfect for flying kites and watching leaves dance!' },
+        { front: '🌈 After the Rain', back: 'After rain, you might see a rainbow — it can make you feel amazed and happy!' },
+        { front: '😴 Gray Day', back: 'Cloudy days can make us feel sleepy or calm — that is perfectly normal!' },
+      ],
+    },
+
+    {
+      id: 'social-taking-care-of-self-d1',
+      title: 'I Can Take Care of Me! 🧼',
+      domain: 'social',
+      instruction: 'How do you take care of yourself?',
+      type: 'multipleChoice',
+      difficulty: 1,
+      data: [
+        { question: 'Before eating, you should... 🧼', options: ['Wash your hands', 'Take a nap', 'Run around', 'Watch TV'], answer: 'Wash your hands', hint: 'Soap and water get rid of germs!' },
+        { question: 'How many times a day should you brush your teeth? 🦷', options: ['Two times', 'Zero times', 'Ten times', 'Once a week'], answer: 'Two times', hint: 'Morning and night — to keep them clean!' },
+        { question: 'Why do we drink water? 💧', options: ['Our body needs it to stay healthy', 'It tastes like candy', 'To make puddles', 'To wash dishes'], answer: 'Our body needs it to stay healthy', hint: 'Water helps every part of your body work!' },
+        { question: 'When you feel tired, what should you do? 😴', options: ['Rest or take a nap', 'Eat lots of candy', 'Run faster', 'Stay up all night'], answer: 'Rest or take a nap', hint: 'Your body needs sleep to grow strong!' },
+        { question: 'Which is a healthy snack? 🍎', options: ['An apple', 'A candy bar', 'A cookie', 'A soda'], answer: 'An apple', hint: 'Fruits and vegetables are great for your body!' },
+        { question: 'After using the bathroom, you should... 🚽', options: ['Wash your hands', 'Go play right away', 'Take a bath', 'Eat a snack'], answer: 'Wash your hands', hint: 'Always wash with soap and water!' },
+        { question: 'When it is cold outside, you should wear... 🧥', options: ['A warm coat', 'A swimsuit', 'Nothing extra', 'Just socks'], answer: 'A warm coat', hint: 'Keep your body warm when it is chilly!' },
+        { question: 'Exercise like running and playing helps your body... 🏃', options: ['Stay strong and healthy', 'Get tired forever', 'Shrink', 'Turn invisible'], answer: 'Stay strong and healthy', hint: 'Moving your body makes it stronger!' },
+      ],
+    },
+
+    {
+      id: 'social-new-situations-d1',
+      title: 'New Places, New Friends 🏫',
+      domain: 'social',
+      instruction: 'Match the new situation with a helpful response!',
+      type: 'dragDrop',
+      difficulty: 1,
+      data: {
+        items: [
+          { id: 's1', text: '🏫 First day of school' },
+          { id: 's2', text: '👶 New baby in the family' },
+          { id: 's3', text: '🏠 Moving to a new house' },
+          { id: 's4', text: '🧑‍🤝‍🧑 Meeting new kids' },
+          { id: 's5', text: '🏊 First swim lesson' },
+          { id: 's6', text: '🏥 Visiting the doctor' },
+          { id: 's7', text: '✈️ First airplane ride' },
+          { id: 's8', text: '🛒 Lost in a store' },
+        ],
+        targets: [
+          { id: 't1', text: '😊 Be brave, you will make friends!' },
+          { id: 't2', text: '💕 Help mommy and daddy with the baby' },
+          { id: 't3', text: '📦 Explore your new room!' },
+          { id: 't4', text: '👋 Say hi and ask to play' },
+          { id: 't5', text: '💪 The teacher will keep you safe' },
+          { id: 't6', text: '🩺 The doctor helps you stay healthy' },
+          { id: 't7', text: '✨ Look out the window — it is exciting!' },
+          { id: 't8', text: '🧑‍💼 Find a worker and tell your name' },
+        ],
+      },
+    },
+
+    // === NEW SOCIAL D2 (Age 4) — 3 activities ===
+
+    {
+      id: 'social-asking-for-help-d2',
+      title: 'It\'s OK to Ask for Help 🙋',
+      domain: 'social',
+      instruction: 'When and how should you ask for help?',
+      type: 'multipleChoice',
+      difficulty: 2,
+      data: [
+        { question: 'You cannot reach something on a high shelf. What should you do? 🫴', options: ['Ask a grown-up for help', 'Climb on the counter', 'Throw something at it', 'Cry and give up'], answer: 'Ask a grown-up for help', hint: 'Grown-ups are tall and happy to help!' },
+        { question: 'You do not understand your homework. What is a good idea? 📚', options: ['Ask your teacher or parent', 'Just guess everything', 'Throw it away', 'Copy your friend'], answer: 'Ask your teacher or parent', hint: 'Teachers and parents LOVE helping you learn!' },
+        { question: 'How should you ask for help politely? 🙏', options: ['Say "Please, can you help me?"', 'Shout "HELP ME NOW!"', 'Grab their arm', 'Bang on the table'], answer: 'Say "Please, can you help me?"', hint: 'Using please shows good manners!' },
+        { question: 'Is it okay to ask for help? 🤔', options: ['Yes! Everyone needs help sometimes', 'No, you should never ask', 'Only babies ask for help', 'Only at bedtime'], answer: 'Yes! Everyone needs help sometimes', hint: 'Even grown-ups ask for help!' },
+        { question: 'You feel sad but do not know why. Who can you talk to? 😢', options: ['A parent or trusted adult', 'A stranger on the street', 'Nobody at all', 'Only your pet'], answer: 'A parent or trusted adult', hint: 'Trusted adults care about your feelings!' },
+        { question: 'You are lost at the park. What should you do? 🏞️', options: ['Find a parent with kids or park worker', 'Keep walking far away', 'Hide behind a tree', 'Just wait quietly forever'], answer: 'Find a parent with kids or park worker', hint: 'Look for a safe grown-up who can help!' },
+        { question: 'After someone helps you, what should you say? 🙂', options: ['Thank you!', 'Nothing', 'Help me again', 'That was too slow'], answer: 'Thank you!', hint: 'Thanking people makes them feel appreciated!' },
+        { question: 'Your shoe is untied and you cannot tie it yet. What do you do? 👟', options: ['Ask someone to help tie it', 'Walk with it untied', 'Take your shoes off', 'Sit and wait all day'], answer: 'Ask someone to help tie it', hint: 'It is smart to ask — untied shoes can make you trip!' },
+      ],
+    },
+
+    {
+      id: 'social-indoor-outdoor-manners-d2',
+      title: 'Inside Voice, Outside Voice 🔊',
+      domain: 'social',
+      instruction: 'Learn about how to behave in different places!',
+      type: 'flashcard',
+      difficulty: 2,
+      data: [
+        { front: '🏠 Inside Voice', back: 'Use a quiet, calm voice when you are inside — people are close and do not need shouting!' },
+        { front: '🏞️ Outside Voice', back: 'Outside you can be louder — there is more space and you need to be heard!' },
+        { front: '📚 Library', back: 'Use a whisper in the library — people are reading and need quiet to focus!' },
+        { front: '🍽️ Restaurant', back: 'Use your inside voice at a restaurant — other people are eating and talking too!' },
+        { front: '⛪ Quiet Places', back: 'In places like museums or ceremonies, sit still and whisper or stay quiet!' },
+        { front: '🛝 Playground', back: 'The playground is great for loud voices — cheer, laugh, and call to friends!' },
+        { front: '🛒 Grocery Store', back: 'Walk calmly in a store — stay near your grown-up and use your inside voice!' },
+        { front: '🚗 In the Car', back: 'Use a normal voice in the car — the driver needs to hear and concentrate!' },
+      ],
+    },
+
+    {
+      id: 'social-peer-pressure-intro-d2',
+      title: 'What if Someone Asks Me To? 🤔',
+      domain: 'social',
+      instruction: 'Sort these — should you do it or not?',
+      type: 'dragDrop',
+      difficulty: 2,
+      data: {
+        items: [
+          { id: 'p1', text: '🤝 A friend asks you to play together' },
+          { id: 'p2', text: '😠 Someone dares you to hit another kid' },
+          { id: 'p3', text: '📚 A friend asks you to read together' },
+          { id: 'p4', text: '🍬 A stranger offers you candy to come with them' },
+          { id: 'p5', text: '🎨 A classmate invites you to draw pictures' },
+          { id: 'p6', text: '🚫 Someone tells you to take a toy that is not yours' },
+          { id: 'p7', text: '🧹 A teacher asks you to help clean up' },
+          { id: 'p8', text: '🤐 A kid says not to tell a grown-up about something scary' },
+        ],
+        targets: [
+          { id: 't1', text: '✅ Good idea — yes!' },
+          { id: 't2', text: '🚫 Bad idea — say no!' },
+          { id: 't3', text: '✅ Good idea — yes!' },
+          { id: 't4', text: '🚫 Bad idea — say no!' },
+          { id: 't5', text: '✅ Good idea — yes!' },
+          { id: 't6', text: '🚫 Bad idea — say no!' },
+          { id: 't7', text: '✅ Good idea — yes!' },
+          { id: 't8', text: '🚫 Bad idea — say no!' },
+        ],
+      },
+    },
+
+    // === NEW SOCIAL D3 (Age 5) — 3 activities ===
+
+    {
+      id: 'social-media-advertising-d3',
+      title: 'Ads and Real Life 📺',
+      domain: 'social',
+      instruction: 'Learn how ads try to make you want things!',
+      type: 'multipleChoice',
+      difficulty: 3,
+      data: [
+        { question: 'What is an advertisement (ad)? 📺', options: ['A message that tries to sell you something', 'A bedtime story', 'A school lesson', 'A letter from a friend'], answer: 'A message that tries to sell you something', hint: 'Ads want you to buy or want their product!' },
+        { question: 'Why do toys in ads look SO amazing? 🤩', options: ['They use special lights and tricks', 'The toys are actually magic', 'Ads always tell the truth', 'They are different toys'], answer: 'They use special lights and tricks', hint: 'Ads make things look better than they really are!' },
+        { question: 'If an ad says "This is the BEST toy EVER!" is that always true? 🤔', options: ['No — they say that to make you want it', 'Yes — ads are always honest', 'Only on Tuesdays', 'Yes — it must be true'], answer: 'No — they say that to make you want it', hint: 'Ads use exciting words to get your attention!' },
+        { question: 'What should you do when you see a toy ad? 🧸', options: ['Think about if you really want or need it', 'Beg for it right away', 'Buy it immediately', 'Believe everything the ad says'], answer: 'Think about if you really want or need it', hint: 'It is smart to think first before wanting something!' },
+        { question: 'Cereal boxes with cartoon characters are trying to... 🥣', options: ['Get kids to want that cereal', 'Teach you about cartoons', 'Make you laugh', 'Help you eat healthy'], answer: 'Get kids to want that cereal', hint: 'Fun characters make you notice and want the product!' },
+        { question: 'Your favorite YouTube star says "Buy this game!" Should you? 🎮', options: ['Think first — they might be paid to say that', 'Buy it right away because they like it', 'Buy ten of them', 'It must be the best game ever'], answer: 'Think first — they might be paid to say that', hint: 'Companies pay people to talk about their products!' },
+        { question: 'Where do you see ads? 📱', options: ['TV, phone, stores, and websites — everywhere!', 'Only on TV', 'Only in stores', 'Nowhere'], answer: 'TV, phone, stores, and websites — everywhere!', hint: 'Ads are in many, many places!' },
+        { question: 'The BEST way to decide if you want something is to... 🧠', options: ['Talk to a parent and think about it', 'See it once in an ad and buy it', 'Cry until you get it', 'Buy everything you see'], answer: 'Talk to a parent and think about it', hint: 'Smart shoppers think and talk before buying!' },
+      ],
+    },
+
+    {
+      id: 'social-cultural-celebrations-d3',
+      title: 'Celebrations Around the World 🎉',
+      domain: 'social',
+      instruction: 'Learn about special celebrations from different places!',
+      type: 'flashcard',
+      difficulty: 3,
+      data: [
+        { front: '🪔 Diwali', back: 'The Festival of Lights celebrated in India — families light lamps and share sweets!' },
+        { front: '🧧 Lunar New Year', back: 'Celebrated in China and other Asian countries — with red envelopes, dragons, and fireworks!' },
+        { front: '🕎 Hanukkah', back: 'A Jewish holiday lasting 8 nights — families light candles on a menorah and play dreidel!' },
+        { front: '🌙 Eid', back: 'A special celebration for Muslims — families feast, pray, and give gifts after Ramadan!' },
+        { front: '🕯️ Kwanzaa', back: 'A week-long celebration of African heritage — with 7 candles for 7 important values!' },
+        { front: '🎄 Christmas', back: 'Celebrated by Christians and others worldwide — with gift-giving, trees, and family gatherings!' },
+        { front: '🎊 Carnival', back: 'A big celebration in Brazil and other places — with parades, costumes, music, and dancing!' },
+        { front: '🌸 Holi', back: 'The Festival of Colors in India — people throw colorful powder and water at each other for fun!' },
+      ],
+    },
+
+    {
+      id: 'social-coping-big-changes-d3',
+      title: 'When Big Things Change 🔄',
+      domain: 'social',
+      instruction: 'Match each big change to a helpful way to cope!',
+      type: 'dragDrop',
+      difficulty: 3,
+      data: {
+        items: [
+          { id: 'c1', text: '🏠 Moving to a new city' },
+          { id: 'c2', text: '🏫 Starting a new school' },
+          { id: 'c3', text: '👶 Getting a new sibling' },
+          { id: 'c4', text: '😢 A pet passed away' },
+          { id: 'c5', text: '👨‍👩‍👧 Parents living apart' },
+          { id: 'c6', text: '🏥 A family member is sick' },
+          { id: 'c7', text: '👋 Best friend moved away' },
+          { id: 'c8', text: '🧑‍🏫 Getting a new teacher' },
+        ],
+        targets: [
+          { id: 't1', text: '📦 Explore the new place and keep old friends by phone' },
+          { id: 't2', text: '😊 Smile, say hi, and join activities to make new friends' },
+          { id: 't3', text: '💕 Help with the baby and have special time with parents' },
+          { id: 't4', text: '📖 Remember happy times and talk about your feelings' },
+          { id: 't5', text: '💛 Both parents still love you — it is not your fault' },
+          { id: 't6', text: '🤗 Make cards and help in small ways to show you care' },
+          { id: 't7', text: '💌 Write letters, video chat, and make new friends too' },
+          { id: 't8', text: '🌟 Give them a chance — new teachers can be great!' },
+        ],
+      },
+    },
   ],
 
   motor: [
@@ -9120,6 +9818,131 @@ export const ACTIVITIES = {
     prompt: 'Draw a scene from your favorite story! 📖🌈',
   },
 },
+
+
+    // === NEW MOTOR ACTIVITIES ===
+
+    // === NEW MOTOR D1 (Age 3) — 3 activities ===
+
+    {
+      id: 'motor-trace-vehicles-d1',
+      title: 'Trace Vehicles 🚗',
+      domain: 'motor',
+      instruction: 'Trace each vehicle shape!',
+      type: 'tracing',
+      difficulty: 1,
+      data: {
+        shapes: ['car', 'bus', 'truck', 'bicycle', 'airplane', 'boat'],
+      },
+    },
+
+    {
+      id: 'motor-draw-numbers-freehand-d1',
+      title: 'Draw Numbers 1-5 ✏️',
+      domain: 'motor',
+      instruction: 'Practice writing numbers with your finger!',
+      type: 'tracing',
+      difficulty: 1,
+      data: {
+        freeform: true,
+        label: 'Draw numbers 1 through 5',
+        prompt: 'Practice writing each number: 1, 2, 3, 4, 5! 🔢',
+      },
+    },
+
+    {
+      id: 'motor-trace-seasons-d1',
+      title: 'Draw the Seasons 🍂',
+      domain: 'motor',
+      instruction: 'Draw something for each season!',
+      type: 'tracing',
+      difficulty: 1,
+      data: {
+        freeform: true,
+        label: 'Draw something for each season',
+        prompt: 'Draw a snowflake, flower, sun, and leaf! ❄️🌸☀️🍂',
+      },
+    },
+
+    // === NEW MOTOR D2 (Age 4) — 3 activities ===
+
+    {
+      id: 'motor-trace-lowercase-i-p-d2',
+      title: 'Trace Lowercase i-p ✏️',
+      domain: 'motor',
+      instruction: 'Trace each lowercase letter carefully!',
+      type: 'tracing',
+      difficulty: 2,
+      data: {
+        letters: ['i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'],
+      },
+    },
+
+    {
+      id: 'motor-trace-word-families-d2',
+      title: 'Rhyming Word Families 🏠',
+      domain: 'motor',
+      instruction: 'Trace these rhyming words!',
+      type: 'tracing',
+      difficulty: 2,
+      data: {
+        words: ['cat', 'hat', 'bat', 'mat', 'sit', 'bit', 'hit', 'pit'],
+      },
+    },
+
+    {
+      id: 'motor-draw-emotions-freeform-d2',
+      title: 'Draw How You Feel 😊',
+      domain: 'motor',
+      instruction: 'Draw faces showing different feelings!',
+      type: 'tracing',
+      difficulty: 2,
+      data: {
+        freeform: true,
+        label: 'Draw a feelings face',
+        prompt: 'Draw happy, sad, angry, and surprised faces! 😊😢😠😲',
+      },
+    },
+
+    // === NEW MOTOR D3 (Age 5) — 3 activities ===
+
+    {
+      id: 'motor-write-months-d3',
+      title: 'Write the Months 🗓️',
+      domain: 'motor',
+      instruction: 'Practice writing the months of the year!',
+      type: 'tracing',
+      difficulty: 3,
+      data: {
+        words: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      },
+    },
+
+    {
+      id: 'motor-draw-my-neighborhood-d3',
+      title: 'Draw My Neighborhood 🏘️',
+      domain: 'motor',
+      instruction: 'Draw your neighborhood!',
+      type: 'tracing',
+      difficulty: 3,
+      data: {
+        freeform: true,
+        label: 'Draw your neighborhood',
+        prompt: 'Draw your street, houses, trees, and people you see every day! 🏘️🌳',
+      },
+    },
+
+    {
+      id: 'motor-trace-cursive-words-d3',
+      title: 'Trace Cursive Words 🖋️',
+      domain: 'motor',
+      instruction: 'Trace these words in cursive writing!',
+      type: 'tracing',
+      difficulty: 3,
+      data: {
+        words: ['cat', 'dog', 'sun', 'ball', 'play', 'love', 'happy', 'friend'],
+      },
+    },
   ],
 
   arts: [

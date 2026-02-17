@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
+import { playFlip } from '../utils/sound';
 
 export default function Flashcard({ activity, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,6 +17,7 @@ export default function Flashcard({ activity, onComplete }) {
   }, [activity.id]);
 
   const handleFlip = () => {
+    playFlip();
     if (!flipped) {
       setViewed((prev) => new Set([...prev, currentIndex]));
     }

@@ -127,6 +127,21 @@ export function resetProfile(appData, profileId) {
   return updated;
 }
 
+// ── Export / Import ──────────────────────────────────────────────────────────
+
+export function exportData(appData) {
+  return JSON.stringify(appData, null, 2);
+}
+
+export function importData(jsonString) {
+  const parsed = JSON.parse(jsonString); // throws on invalid JSON
+  if (!parsed || typeof parsed !== 'object' || !parsed.profiles) {
+    throw new Error('Invalid backup file: missing profiles data.');
+  }
+  saveAppData(parsed);
+  return parsed;
+}
+
 export function updateStreak(data) {
   const today = new Date().toDateString();
   const lastPlay = data.lastPlayDate;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import TTSButton from '../components/TTS/TTSButton';
 import { useTTS } from '../hooks/useTTS';
+import { playClick, playCorrect } from '../utils/sound';
 
 export default function Counting({ activity, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,11 +39,13 @@ export default function Counting({ activity, onComplete }) {
   const handleTap = (index) => {
     if (tapped.has(index) || showCheck) return;
     setShowNudge(false);
+    playClick();
     const newTapped = new Set([...tapped, index]);
     setTapped(newTapped);
     setCounted(newTapped.size);
 
     if (newTapped.size === current.count) {
+      playCorrect();
       setShowCheck(true);
       setCorrect((c) => c + 1);
       setTimeout(() => {

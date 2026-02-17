@@ -3,9 +3,11 @@ import {
   loadAppData, saveAppData, getActiveProfile, saveActiveProfile,
   createProfile, deleteProfile, switchProfile, resetProfile, updateStreak,
 } from '../utils/storage';
+import { getEarnedBadges } from '../data/achievements';
 
 export function useProgress() {
   const [appData, setAppData] = useState(() => loadAppData());
+  const [newBadges, setNewBadges] = useState([]);
 
   const profile = getActiveProfile(appData);
   const data = { ...profile, pin: appData.pin };
@@ -13,6 +15,8 @@ export function useProgress() {
   const completeActivity = useCallback((domainId, activityId, stars, correct, total) => {
     setAppData((prev) => {
       const p = getActiveProfile(prev);
+      const badgesBefore = new Set(getEarnedBadges(p).map((b) => b.id));
+
       const updated = { ...p };
 
       if (!updated.completed[domainId]) updated.completed[domainId] = {};
@@ -36,6 +40,15 @@ export function useProgress() {
       ].slice(0, 100);
 
       const withStreak = updateStreak(updated);
+
+      // Detect newly earned badges
+      const badgesAfter = getEarnedBadges(withStreak);
+      const justEarned = badgesAfter.filter((b) => !badgesBefore.has(b.id));
+      if (justEarned.length > 0) {
+        // Schedule outside the setState to avoid batching issues
+        setTimeout(() => setNewBadges((prev) => [...prev, ...justEarned]), 0);
+      }
+
       return saveActiveProfile(prev, withStreak);
     });
   }, []);
@@ -53,6 +66,8 @@ export function useProgress() {
       return updatedApp;
     });
   }, []);
+
+  const clearNewBadges = useCallback(() => setNewBadges([]), []);
 
   const reset = useCallback(() => {
     setAppData((prev) => resetProfile(prev));
@@ -89,5 +104,7 @@ export function useProgress() {
     addProfile,
     removeProfile,
     setActiveProfile,
+    newBadges,
+    clearNewBadges,
   };
 }
