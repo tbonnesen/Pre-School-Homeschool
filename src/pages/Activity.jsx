@@ -8,6 +8,8 @@ import Flashcard from '../activities/Flashcard';
 import Counting from '../activities/Counting';
 import Tracing from '../activities/Tracing';
 import DragDrop from '../activities/DragDrop';
+import WordBuilder from '../activities/WordBuilder';
+import SightWords from '../activities/SightWords';
 import HelpPanel from '../components/HelpPanel/HelpPanel';
 import BadgeModal from '../components/BadgeModal/BadgeModal';
 
@@ -17,6 +19,8 @@ const COMPONENTS = {
   counting: Counting,
   tracing: Tracing,
   dragDrop: DragDrop,
+  wordBuilder: WordBuilder,
+  sightWords: SightWords,
 };
 
 export default function Activity({ completeActivity, newBadges, clearNewBadges }) {
@@ -67,7 +71,7 @@ export default function Activity({ completeActivity, newBadges, clearNewBadges }
           <div className="stars">
             {'★'.repeat(result.stars)}{'☆'.repeat(3 - result.stars)}
           </div>
-          {result.total > 0 && activity.type !== 'flashcard' && activity.type !== 'tracing' && (
+          {result.total > 0 && !['flashcard', 'tracing', 'sightWords'].includes(activity.type) && (
             <p>{result.correct} out of {result.total} correct</p>
           )}
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', marginTop: 16 }}>

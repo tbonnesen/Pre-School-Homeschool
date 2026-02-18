@@ -35,7 +35,7 @@ export const HELP_TOPICS = {
     ],
   },
   'sight-words': {
-    patterns: ['sight-word', 'letters-sight-word'],
+    patterns: ['sight-word', 'letters-sight-word', 'sight-words-preprimary', 'sight-words-primer', 'sight-words-first-grade'],
     title: 'Sight Words',
     helpText: 'Sight words are words you see a lot like "the", "and", "is". When you know them by heart, reading becomes much easier!',
     emoji: '👀',
@@ -53,7 +53,7 @@ export const HELP_TOPICS = {
     ],
   },
   'cvc-words': {
-    patterns: ['cvc-', 'read-cvc', 'spelling-cvc', 'word-building'],
+    patterns: ['cvc-', 'read-cvc', 'spelling-cvc', 'word-building', 'word-builder-cvc', 'word-builder-ccvc', 'word-builder-blends'],
     title: 'CVC Words',
     helpText: 'CVC words have a consonant, vowel, consonant pattern like "cat" or "dog". Sound out each letter and blend them together!',
     emoji: '📝',
